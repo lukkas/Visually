@@ -10,6 +10,11 @@
 		B23B9959205D58E600B0A50F /* VisualConstraints.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B23B994F205D58E600B0A50F /* VisualConstraints.framework */; };
 		B23B995E205D58E600B0A50F /* VisualConstraintsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23B995D205D58E600B0A50F /* VisualConstraintsTests.swift */; };
 		B23B9960205D58E600B0A50F /* VisualConstraints.h in Headers */ = {isa = PBXBuildFile; fileRef = B23B9952205D58E600B0A50F /* VisualConstraints.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B23B996E205D5A4E00B0A50F /* ConstraintParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23B9969205D5A4E00B0A50F /* ConstraintParameters.swift */; };
+		B23B996F205D5A4E00B0A50F /* UILayoutPriorities.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23B996A205D5A4E00B0A50F /* UILayoutPriorities.swift */; };
+		B23B9970205D5A4E00B0A50F /* OperatorDefinitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23B996B205D5A4E00B0A50F /* OperatorDefinitions.swift */; };
+		B23B9971205D5A4E00B0A50F /* OperatorImplementations.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23B996C205D5A4E00B0A50F /* OperatorImplementations.swift */; };
+		B23B9972205D5A4E00B0A50F /* BuildPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23B996D205D5A4E00B0A50F /* BuildPoints.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +34,11 @@
 		B23B9958205D58E600B0A50F /* VisualConstraintsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VisualConstraintsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B23B995D205D58E600B0A50F /* VisualConstraintsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualConstraintsTests.swift; sourceTree = "<group>"; };
 		B23B995F205D58E600B0A50F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B23B9969205D5A4E00B0A50F /* ConstraintParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstraintParameters.swift; sourceTree = "<group>"; };
+		B23B996A205D5A4E00B0A50F /* UILayoutPriorities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILayoutPriorities.swift; sourceTree = "<group>"; };
+		B23B996B205D5A4E00B0A50F /* OperatorDefinitions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperatorDefinitions.swift; sourceTree = "<group>"; };
+		B23B996C205D5A4E00B0A50F /* OperatorImplementations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperatorImplementations.swift; sourceTree = "<group>"; };
+		B23B996D205D5A4E00B0A50F /* BuildPoints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildPoints.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +83,11 @@
 			children = (
 				B23B9952205D58E600B0A50F /* VisualConstraints.h */,
 				B23B9953205D58E600B0A50F /* Info.plist */,
+				B23B996D205D5A4E00B0A50F /* BuildPoints.swift */,
+				B23B9969205D5A4E00B0A50F /* ConstraintParameters.swift */,
+				B23B996B205D5A4E00B0A50F /* OperatorDefinitions.swift */,
+				B23B996C205D5A4E00B0A50F /* OperatorImplementations.swift */,
+				B23B996A205D5A4E00B0A50F /* UILayoutPriorities.swift */,
 			);
 			path = VisualConstraints;
 			sourceTree = "<group>";
@@ -148,6 +163,7 @@
 				TargetAttributes = {
 					B23B994E205D58E600B0A50F = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
 					B23B9957205D58E600B0A50F = {
@@ -196,6 +212,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B23B9970205D5A4E00B0A50F /* OperatorDefinitions.swift in Sources */,
+				B23B9972205D5A4E00B0A50F /* BuildPoints.swift in Sources */,
+				B23B9971205D5A4E00B0A50F /* OperatorImplementations.swift in Sources */,
+				B23B996E205D5A4E00B0A50F /* ConstraintParameters.swift in Sources */,
+				B23B996F205D5A4E00B0A50F /* UILayoutPriorities.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,6 +355,7 @@
 		B23B9964205D58E600B0A50F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -347,6 +369,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.appunite.VisualConstraints;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -355,6 +378,7 @@
 		B23B9965205D58E600B0A50F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -376,6 +400,7 @@
 		B23B9967205D58E600B0A50F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = E6WRHQXQE9;
 				INFOPLIST_FILE = VisualConstraintsTests/Info.plist;
@@ -390,6 +415,7 @@
 		B23B9968205D58E600B0A50F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = E6WRHQXQE9;
 				INFOPLIST_FILE = VisualConstraintsTests/Info.plist;
