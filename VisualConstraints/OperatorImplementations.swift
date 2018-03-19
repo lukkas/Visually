@@ -161,6 +161,16 @@ public func -<=- (lhs: BuildPointConvertible, rhs: BuildPointConvertible) -> Bui
     return BuildPoint(constraints: lConstraints + [constraint] + rConstraints, view: rView)
 }
 
+public func - (lhs: BuildPointConvertible, rhs: CGFloat) -> IntermediaryBuildPoint {
+    let parameters = ConstraintParameters(constant: rhs, priority: .required)
+    return IntermediaryBuildPoint(lastBuildPoint: lhs.buildPoint(), parameters: parameters, relation: .equal)
+}
+
+public func - (lhs: BuildPointConvertible, rhs: (CGFloat, UILayoutPriority)) -> IntermediaryBuildPoint {
+    let parameters = ConstraintParameters(constant: rhs.0, priority: rhs.1)
+    return IntermediaryBuildPoint(lastBuildPoint: lhs.buildPoint(), parameters: parameters, relation: .equal)
+}
+
 public func ->= (lhs: BuildPointConvertible, rhs: CGFloat) -> IntermediaryBuildPoint {
     let parameters = ConstraintParameters(constant: rhs, priority: .required)
     return IntermediaryBuildPoint(lastBuildPoint: lhs.buildPoint(), parameters: parameters, relation: .greaterThanOrEqual)
