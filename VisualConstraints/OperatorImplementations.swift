@@ -257,13 +257,24 @@ public postfix func -<=-| (lhs: BuildPointConvertible) -> BuildPoint {
     return BuildPoint(constraints: constraints + [constraint], view: view)
 }
 
+/// for Int literals
 public extension Int {
-    func priority(_ priority: UILayoutPriority) -> ConstraintParameters {
-        return ConstraintParameters(constant: CGFloat(self), priority: priority)
+    public func priority(_ priority: UILayoutPriority) -> ConstraintParameters {
+        return CGFloat(self).priority(priority)
     }
     
-    func priority(_ priority: Float) -> ConstraintParameters {
-        return ConstraintParameters(constant: CGFloat(self), priority: UILayoutPriority(priority))
+    public func priority(_ priority: Float) -> ConstraintParameters {
+        return CGFloat(self).priority(priority)
+    }
+}
+
+public extension CGFloat {
+    public func priority(_ priority: UILayoutPriority) -> ConstraintParameters {
+        return ConstraintParameters(constant: self, priority: priority)
+    }
+    
+    public func priority(_ priority: Float) -> ConstraintParameters {
+        return ConstraintParameters(constant: self, priority: UILayoutPriority(priority))
     }
 }
 
