@@ -47,5 +47,11 @@ class VisualConstraintsTests: XCTestCase {
     func testLastConstraintIsGreaterOrEqual20_whenPinningRightmostviewWithSuchParameters() {
         let constraints = H(|-view1-view2->=20-|)
         XCTAssertEqual(constraints[2].constant, 20)
+        XCTAssertEqual(constraints[2].relation, .greaterThanOrEqual)
+    }
+    
+    func testLastConstraintIsOfPriority750_whenPrioritySetWithIntegerExtension() {
+        let constraints = H(|-view1-view2-20.priority(750)-|)
+        XCTAssertEqual(constraints[2].priority, UILayoutPriority(750))
     }
 }

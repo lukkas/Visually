@@ -13,8 +13,7 @@ public prefix func |- (constant: CGFloat) -> OpeningBuildPoint {
     return OpeningBuildPoint(parameters: parameters, relation: .equal)
 }
 
-public prefix func |- (parameters: (CGFloat, UILayoutPriority)) -> OpeningBuildPoint {
-    let parameters = ConstraintParameters(constant: parameters.0, priority: parameters.1)
+public prefix func |- (parameters: ConstraintParameters) -> OpeningBuildPoint {
     return OpeningBuildPoint(parameters: parameters, relation: .equal)
 }
 
@@ -34,8 +33,7 @@ public prefix func |->= (constant: CGFloat) -> OpeningBuildPoint {
     return OpeningBuildPoint(parameters: parameters, relation: .greaterThanOrEqual)
 }
 
-public prefix func |->= (parameters: (CGFloat, UILayoutPriority)) -> OpeningBuildPoint {
-    let parameters = ConstraintParameters(constant: parameters.0, priority: parameters.1)
+public prefix func |->= (parameters: ConstraintParameters) -> OpeningBuildPoint {
     return OpeningBuildPoint(parameters: parameters, relation: .greaterThanOrEqual)
 }
 
@@ -44,8 +42,7 @@ public prefix func |-<= (constant: CGFloat) -> OpeningBuildPoint {
     return OpeningBuildPoint(parameters: parameters, relation: .lessThanOrEqual)
 }
 
-public prefix func |-<= (parameters: (CGFloat, UILayoutPriority)) -> OpeningBuildPoint {
-    let parameters = ConstraintParameters(constant: parameters.0, priority: parameters.1)
+public prefix func |-<= (parameters: ConstraintParameters) -> OpeningBuildPoint {
     return OpeningBuildPoint(parameters: parameters, relation: .lessThanOrEqual)
 }
 
@@ -166,9 +163,8 @@ public func - (lhs: BuildPointConvertible, rhs: CGFloat) -> IntermediaryBuildPoi
     return IntermediaryBuildPoint(lastBuildPoint: lhs.buildPoint(), parameters: parameters, relation: .equal)
 }
 
-public func - (lhs: BuildPointConvertible, rhs: (CGFloat, UILayoutPriority)) -> IntermediaryBuildPoint {
-    let parameters = ConstraintParameters(constant: rhs.0, priority: rhs.1)
-    return IntermediaryBuildPoint(lastBuildPoint: lhs.buildPoint(), parameters: parameters, relation: .equal)
+public func - (lhs: BuildPointConvertible, rhs: ConstraintParameters) -> IntermediaryBuildPoint {
+    return IntermediaryBuildPoint(lastBuildPoint: lhs.buildPoint(), parameters: rhs, relation: .equal)
 }
 
 public func ->= (lhs: BuildPointConvertible, rhs: CGFloat) -> IntermediaryBuildPoint {
@@ -176,9 +172,8 @@ public func ->= (lhs: BuildPointConvertible, rhs: CGFloat) -> IntermediaryBuildP
     return IntermediaryBuildPoint(lastBuildPoint: lhs.buildPoint(), parameters: parameters, relation: .greaterThanOrEqual)
 }
 
-public func ->= (lhs: BuildPointConvertible, rhs: (CGFloat, UILayoutPriority)) -> IntermediaryBuildPoint {
-    let parameters = ConstraintParameters(constant: rhs.0, priority: rhs.1)
-    return IntermediaryBuildPoint(lastBuildPoint: lhs.buildPoint(), parameters: parameters, relation: .greaterThanOrEqual)
+public func ->= (lhs: BuildPointConvertible, rhs: ConstraintParameters) -> IntermediaryBuildPoint {
+    return IntermediaryBuildPoint(lastBuildPoint: lhs.buildPoint(), parameters: rhs, relation: .greaterThanOrEqual)
 }
 
 public func -<= (lhs: BuildPointConvertible, rhs: CGFloat) -> IntermediaryBuildPoint {
@@ -186,9 +181,8 @@ public func -<= (lhs: BuildPointConvertible, rhs: CGFloat) -> IntermediaryBuildP
     return IntermediaryBuildPoint(lastBuildPoint: lhs.buildPoint(), parameters: parameters, relation: .lessThanOrEqual)
 }
 
-public func -<= (lhs: BuildPointConvertible, rhs: (CGFloat, UILayoutPriority)) -> IntermediaryBuildPoint {
-    let parameters = ConstraintParameters(constant: rhs.0, priority: rhs.1)
-    return IntermediaryBuildPoint(lastBuildPoint: lhs.buildPoint(), parameters: parameters, relation: .lessThanOrEqual)
+public func -<= (lhs: BuildPointConvertible, rhs: ConstraintParameters) -> IntermediaryBuildPoint {
+    return IntermediaryBuildPoint(lastBuildPoint: lhs.buildPoint(), parameters: rhs, relation: .lessThanOrEqual)
 }
 
 public func ->= (lhs: BuildPointConvertible, rhs: ClosingBuildPoint) -> BuildPoint {
@@ -226,9 +220,8 @@ public postfix func -| (lhs: CGFloat) -> ClosingBuildPoint {
     return ClosingBuildPoint(parameters: parameters)
 }
 
-public postfix func -| (lhs: (CGFloat, UILayoutPriority)) -> ClosingBuildPoint {
-    let parameters = ConstraintParameters(constant: lhs.0, priority: lhs.1)
-    return ClosingBuildPoint(parameters: parameters)
+public postfix func -| (lhs: ConstraintParameters) -> ClosingBuildPoint {
+    return ClosingBuildPoint(parameters: lhs)
 }
 
 public postfix func -| (lhs: BuildPointConvertible) -> BuildPoint {
@@ -242,7 +235,7 @@ public postfix func -| (lhs: BuildPointConvertible) -> BuildPoint {
     return BuildPoint(constraints: constraints + [constraint], view: view)
 }
 
-postfix func ->=-| (lhs: BuildPointConvertible) -> BuildPoint {
+public postfix func ->=-| (lhs: BuildPointConvertible) -> BuildPoint {
     let (superview, view, constraints) = lhs.decomposeWithSuperview()
     let constraint: Constraint = { axis in
         switch axis {
@@ -253,7 +246,7 @@ postfix func ->=-| (lhs: BuildPointConvertible) -> BuildPoint {
     return BuildPoint(constraints: constraints + [constraint], view: view)
 }
 
-postfix func -<=-| (lhs: BuildPointConvertible) -> BuildPoint {
+public postfix func -<=-| (lhs: BuildPointConvertible) -> BuildPoint {
     let (superview, view, constraints) = lhs.decomposeWithSuperview()
     let constraint: Constraint = { axis in
         switch axis {
@@ -262,6 +255,16 @@ postfix func -<=-| (lhs: BuildPointConvertible) -> BuildPoint {
         }
     }
     return BuildPoint(constraints: constraints + [constraint], view: view)
+}
+
+public extension Int {
+    func priority(_ priority: UILayoutPriority) -> ConstraintParameters {
+        return ConstraintParameters(constant: CGFloat(self), priority: priority)
+    }
+    
+    func priority(_ priority: Float) -> ConstraintParameters {
+        return ConstraintParameters(constant: CGFloat(self), priority: UILayoutPriority(priority))
+    }
 }
 
 public func H(_ buildPoint: BuildPoint) -> [NSLayoutConstraint] {
