@@ -34,19 +34,3 @@ public struct IntermediaryBuildPoint {
     internal let parameters: ConstraintParameters
     internal let relation: NSLayoutRelation
 }
-
-public protocol BuildPointConvertible {
-    func buildPoint() -> BuildPoint
-}
-
-extension BuildPoint: BuildPointConvertible {
-    public func buildPoint() -> BuildPoint {
-        return self
-    }
-}
-
-extension UIView: BuildPointConvertible {
-    public func buildPoint() -> BuildPoint {
-        return BuildPoint(constraints: [], view: self)
-    }
-}

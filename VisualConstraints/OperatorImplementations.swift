@@ -21,8 +21,8 @@ public prefix func |- (bpc: BuildPointConvertible) -> BuildPoint {
     let (superview, view, constraints) = bpc.decomposeWithSuperview()
     let constraint: Constraint = { axis in
         switch axis {
-        case .horizontal: return superview.leadingAnchor.constraint(equalTo: view.leadingAnchor)
-        case .vertical: return superview.topAnchor.constraint(equalTo: view.topAnchor)
+        case .horizontal: return view.leadingAnchor.constraint(equalTo: superview.leadingAnchor)
+        case .vertical: return view.topAnchor.constraint(equalTo: superview.topAnchor)
         }
     }
     return BuildPoint(constraints: constraints + [constraint], view: view)
@@ -50,8 +50,8 @@ public prefix func |->=- (bpc: BuildPointConvertible) -> BuildPoint {
     let (superview, view, constraints) = bpc.decomposeWithSuperview()
     let constraint: Constraint = { axis in
         switch axis {
-        case .horizontal: return superview.leadingAnchor.constraint(greaterThanOrEqualTo: view.leadingAnchor)
-        case .vertical: return superview.topAnchor.constraint(greaterThanOrEqualTo: view.topAnchor)
+        case .horizontal: return view.leadingAnchor.constraint(greaterThanOrEqualTo: superview.leadingAnchor)
+        case .vertical: return view.topAnchor.constraint(greaterThanOrEqualTo: superview.topAnchor)
         }
     }
     return BuildPoint(constraints: constraints + [constraint], view: view)
@@ -61,8 +61,8 @@ public prefix func |-<=- (bpc: BuildPointConvertible) -> BuildPoint {
     let (superview, view, constraints) = bpc.decomposeWithSuperview()
     let constraint: Constraint = { axis in
         switch axis {
-        case .horizontal: return superview.leadingAnchor.constraint(lessThanOrEqualTo: view.leadingAnchor)
-        case .vertical: return superview.topAnchor.constraint(lessThanOrEqualTo: view.topAnchor)
+        case .horizontal: return view.leadingAnchor.constraint(lessThanOrEqualTo: superview.leadingAnchor)
+        case .vertical: return view.topAnchor.constraint(lessThanOrEqualTo: superview.topAnchor)
         }
     }
     return BuildPoint(constraints: constraints + [constraint], view: view)
@@ -73,8 +73,8 @@ public func - (lhs: BuildPointConvertible, rhs: BuildPointConvertible) -> BuildP
     let (rView, rConstraints) = rhs.decompose()
     let constraint: Constraint = { axis in
         switch axis {
-        case .horizontal: return lView.trailingAnchor.constraint(equalTo: rView.leadingAnchor)
-        case .vertical: return lView.bottomAnchor.constraint(equalTo: rView.topAnchor)
+        case .horizontal: return rView.leadingAnchor.constraint(equalTo: lView.trailingAnchor)
+        case .vertical: return rView.topAnchor.constraint(equalTo: lView.bottomAnchor)
         }
     }
     return BuildPoint(constraints: lConstraints + [constraint] + rConstraints, view: rView)
@@ -85,12 +85,12 @@ public func - (lhs: OpeningBuildPoint, rhs: BuildPointConvertible) -> BuildPoint
     let constraint: Constraint = { axis in
         let c: NSLayoutConstraint = {
             switch (axis, lhs.relation) {
-            case (.horizontal, .equal): return superview.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: lhs.parameters.constant)
-            case (.horizontal, .greaterThanOrEqual): return superview.leadingAnchor.constraint(greaterThanOrEqualTo: view.leadingAnchor, constant: lhs.parameters.constant)
-            case (.horizontal, .lessThanOrEqual): return superview.leadingAnchor.constraint(lessThanOrEqualTo: view.leadingAnchor, constant: lhs.parameters.constant)
-            case (.vertical, .equal): return superview.topAnchor.constraint(equalTo: view.topAnchor, constant: lhs.parameters.constant)
-            case (.vertical, .greaterThanOrEqual): return superview.topAnchor.constraint(greaterThanOrEqualTo: view.topAnchor, constant: lhs.parameters.constant)
-            case (.vertical, .lessThanOrEqual): return superview.topAnchor.constraint(lessThanOrEqualTo: view.topAnchor, constant: lhs.parameters.constant)
+            case (.horizontal, .equal): return view.leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: lhs.parameters.constant)
+            case (.horizontal, .greaterThanOrEqual): return view.leadingAnchor.constraint(greaterThanOrEqualTo: superview.leadingAnchor, constant: lhs.parameters.constant)
+            case (.horizontal, .lessThanOrEqual): return view.leadingAnchor.constraint(lessThanOrEqualTo: superview.leadingAnchor, constant: lhs.parameters.constant)
+            case (.vertical, .equal): return view.topAnchor.constraint(equalTo: superview.topAnchor, constant: lhs.parameters.constant)
+            case (.vertical, .greaterThanOrEqual): return view.topAnchor.constraint(greaterThanOrEqualTo: superview.topAnchor, constant: lhs.parameters.constant)
+            case (.vertical, .lessThanOrEqual): return view.topAnchor.constraint(lessThanOrEqualTo: superview.topAnchor, constant: lhs.parameters.constant)
             }
         }()
         c.priority = lhs.parameters.priority
@@ -105,12 +105,12 @@ public func - (lhs: IntermediaryBuildPoint, rhs: BuildPointConvertible) -> Build
     let constraint: Constraint = { axis in
         let c: NSLayoutConstraint = {
             switch (axis, lhs.relation) {
-            case (.horizontal, .equal): return lView.trailingAnchor.constraint(equalTo: rView.leadingAnchor, constant: lhs.parameters.constant)
-            case (.horizontal, .greaterThanOrEqual): return lView.trailingAnchor.constraint(greaterThanOrEqualTo: rView.leadingAnchor, constant: lhs.parameters.constant)
-            case (.horizontal, .lessThanOrEqual): return lView.trailingAnchor.constraint(lessThanOrEqualTo: rView.leadingAnchor, constant: lhs.parameters.constant)
-            case (.vertical, .equal): return lView.bottomAnchor.constraint(equalTo: rView.topAnchor, constant: lhs.parameters.constant)
-            case (.vertical, .greaterThanOrEqual): return lView.bottomAnchor.constraint(greaterThanOrEqualTo: rView.topAnchor, constant: lhs.parameters.constant)
-            case (.vertical, .lessThanOrEqual): return lView.bottomAnchor.constraint(lessThanOrEqualTo: rView.topAnchor, constant: lhs.parameters.constant)
+            case (.horizontal, .equal): return rView.leadingAnchor.constraint(equalTo: lView.trailingAnchor, constant: lhs.parameters.constant)
+            case (.horizontal, .greaterThanOrEqual): return rView.leadingAnchor.constraint(greaterThanOrEqualTo: lView.trailingAnchor, constant: lhs.parameters.constant)
+            case (.horizontal, .lessThanOrEqual): return rView.leadingAnchor.constraint(lessThanOrEqualTo: lView.trailingAnchor, constant: lhs.parameters.constant)
+            case (.vertical, .equal): return rView.topAnchor.constraint(equalTo: lView.bottomAnchor, constant: lhs.parameters.constant)
+            case (.vertical, .greaterThanOrEqual): return rView.topAnchor.constraint(greaterThanOrEqualTo: lView.bottomAnchor, constant: lhs.parameters.constant)
+            case (.vertical, .lessThanOrEqual): return rView.topAnchor.constraint(lessThanOrEqualTo: lView.bottomAnchor, constant: lhs.parameters.constant)
             }
         }()
         c.priority = lhs.parameters.priority
@@ -124,8 +124,8 @@ public func - (lhs: BuildPointConvertible, rhs: ClosingBuildPoint) -> BuildPoint
     let constraint: Constraint = { axis in
         let c: NSLayoutConstraint = {
             switch axis {
-            case .horizontal: return view.trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: rhs.parameters.constant)
-            case .vertical: return view.bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: rhs.parameters.constant)
+            case .horizontal: return superview.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: rhs.parameters.constant)
+            case .vertical: return superview.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: rhs.parameters.constant)
             }
         }()
         c.priority = rhs.parameters.priority
@@ -139,8 +139,8 @@ public func ->=- (lhs: BuildPointConvertible, rhs: BuildPointConvertible) -> Bui
     let (rView, rConstraints) = rhs.decompose()
     let constraint: Constraint = { axis in
         switch axis {
-        case .horizontal: return lView.trailingAnchor.constraint(greaterThanOrEqualTo: rView.leadingAnchor)
-        case .vertical: return lView.bottomAnchor.constraint(greaterThanOrEqualTo: rView.topAnchor)
+        case .horizontal: return rView.leadingAnchor.constraint(greaterThanOrEqualTo: lView.trailingAnchor)
+        case .vertical: return rView.topAnchor.constraint(greaterThanOrEqualTo: lView.bottomAnchor)
         }
     }
     return BuildPoint(constraints: lConstraints + [constraint] + rConstraints, view: rView)
@@ -151,8 +151,8 @@ public func -<=- (lhs: BuildPointConvertible, rhs: BuildPointConvertible) -> Bui
     let (rView, rConstraints) = rhs.decompose()
     let constraint: Constraint = { axis in
         switch axis {
-        case .horizontal: return lView.trailingAnchor.constraint(lessThanOrEqualTo: rView.leadingAnchor)
-        case .vertical: return lView.bottomAnchor.constraint(lessThanOrEqualTo: rView.topAnchor)
+        case .horizontal: return rView.leadingAnchor.constraint(lessThanOrEqualTo: lView.trailingAnchor)
+        case .vertical: return rView.topAnchor.constraint(lessThanOrEqualTo: lView.bottomAnchor)
         }
     }
     return BuildPoint(constraints: lConstraints + [constraint] + rConstraints, view: rView)
@@ -190,8 +190,8 @@ public func ->= (lhs: BuildPointConvertible, rhs: ClosingBuildPoint) -> BuildPoi
     let constraint: Constraint = { axis in
         let c: NSLayoutConstraint = {
             switch axis {
-            case .horizontal: return view.trailingAnchor.constraint(greaterThanOrEqualTo: superview.trailingAnchor, constant: rhs.parameters.constant)
-            case .vertical: return view.bottomAnchor.constraint(greaterThanOrEqualTo: superview.bottomAnchor, constant: rhs.parameters.constant)
+            case .horizontal: return superview.trailingAnchor.constraint(greaterThanOrEqualTo: view.trailingAnchor, constant: rhs.parameters.constant)
+            case .vertical: return superview.bottomAnchor.constraint(greaterThanOrEqualTo: view.bottomAnchor, constant: rhs.parameters.constant)
             }
         }()
         c.priority = rhs.parameters.priority
@@ -205,8 +205,8 @@ public func -<= (lhs: BuildPoint, rhs: ClosingBuildPoint) -> BuildPoint {
     let constraint: Constraint = { axis in
         let c: NSLayoutConstraint = {
             switch axis {
-            case .horizontal: return view.trailingAnchor.constraint(lessThanOrEqualTo: superview.trailingAnchor, constant: rhs.parameters.constant)
-            case .vertical: return view.bottomAnchor.constraint(lessThanOrEqualTo: superview.bottomAnchor, constant: rhs.parameters.constant)
+            case .horizontal: return superview.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor, constant: rhs.parameters.constant)
+            case .vertical: return superview.bottomAnchor.constraint(lessThanOrEqualTo: view.bottomAnchor, constant: rhs.parameters.constant)
             }
         }()
         c.priority = rhs.parameters.priority
@@ -228,8 +228,8 @@ public postfix func -| (lhs: BuildPointConvertible) -> BuildPoint {
     let (superview, view, constraints) = lhs.decomposeWithSuperview()
     let constraint: Constraint = { axis in
         switch axis {
-        case .horizontal: return view.trailingAnchor.constraint(equalTo: superview.trailingAnchor)
-        case .vertical: return view.bottomAnchor.constraint(equalTo: superview.bottomAnchor)
+        case .horizontal: return superview.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        case .vertical: return superview.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         }
     }
     return BuildPoint(constraints: constraints + [constraint], view: view)
@@ -239,8 +239,8 @@ public postfix func ->=-| (lhs: BuildPointConvertible) -> BuildPoint {
     let (superview, view, constraints) = lhs.decomposeWithSuperview()
     let constraint: Constraint = { axis in
         switch axis {
-        case .horizontal: return view.trailingAnchor.constraint(greaterThanOrEqualTo: superview.trailingAnchor)
-        case .vertical: return view.bottomAnchor.constraint(greaterThanOrEqualTo: superview.bottomAnchor)
+        case .horizontal: return superview.trailingAnchor.constraint(greaterThanOrEqualTo: view.trailingAnchor)
+        case .vertical: return superview.bottomAnchor.constraint(greaterThanOrEqualTo: view.bottomAnchor)
         }
     }
     return BuildPoint(constraints: constraints + [constraint], view: view)
@@ -250,60 +250,11 @@ public postfix func -<=-| (lhs: BuildPointConvertible) -> BuildPoint {
     let (superview, view, constraints) = lhs.decomposeWithSuperview()
     let constraint: Constraint = { axis in
         switch axis {
-        case .horizontal: return view.trailingAnchor.constraint(lessThanOrEqualTo: superview.trailingAnchor)
-        case .vertical: return view.bottomAnchor.constraint(lessThanOrEqualTo: superview.bottomAnchor)
+        case .horizontal: return superview.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor)
+        case .vertical: return superview.bottomAnchor.constraint(lessThanOrEqualTo: view.bottomAnchor)
         }
     }
     return BuildPoint(constraints: constraints + [constraint], view: view)
-}
-
-/// for Int literals
-public extension Int {
-    public func priority(_ priority: UILayoutPriority) -> ConstraintParameters {
-        return CGFloat(self).priority(priority)
-    }
-    
-    public func priority(_ priority: Float) -> ConstraintParameters {
-        return CGFloat(self).priority(priority)
-    }
-}
-
-public extension CGFloat {
-    public func priority(_ priority: UILayoutPriority) -> ConstraintParameters {
-        return ConstraintParameters(constant: self, priority: priority)
-    }
-    
-    public func priority(_ priority: Float) -> ConstraintParameters {
-        return ConstraintParameters(constant: self, priority: UILayoutPriority(priority))
-    }
-}
-
-public func H(_ buildPoint: BuildPoint) -> [NSLayoutConstraint] {
-    return buildPoint.constraints.map({ $0(.horizontal) })
-}
-
-public func V(_ buildPoint: BuildPoint) -> [NSLayoutConstraint] {
-    return buildPoint.constraints.map({ $0(.vertical) })
-}
-
-public extension UIView {
-    func length(_ value: CGFloat, relation: NSLayoutRelation = .equal, priority: UILayoutPriority = .required) -> BuildPoint {
-        let constraint: Constraint = { axis in
-            let c: NSLayoutConstraint = {
-                switch (axis, relation) {
-                case (.horizontal, .equal): return self.widthAnchor.constraint(equalToConstant: value)
-                case (.horizontal, .greaterThanOrEqual): return self.widthAnchor.constraint(greaterThanOrEqualToConstant: value)
-                case (.horizontal, .lessThanOrEqual): return self.widthAnchor.constraint(lessThanOrEqualToConstant: value)
-                case (.vertical, .equal): return self.heightAnchor.constraint(equalToConstant: value)
-                case (.vertical, .greaterThanOrEqual): return self.heightAnchor.constraint(greaterThanOrEqualToConstant: value)
-                case (.vertical, .lessThanOrEqual): return self.heightAnchor.constraint(lessThanOrEqualToConstant: value)
-                }
-            }()
-            c.priority = priority
-            return c
-        }
-        return BuildPoint(constraints: [constraint], view: self)
-    }
 }
 
 private extension BuildPointConvertible {
@@ -323,10 +274,4 @@ private extension BuildPointConvertible {
 
 private func throwMissingSuperviewException() -> Never {
     fatalError("Attempt to pin view to superview, while it doesn't have one.")
-}
-
-internal extension UIView {
-    func isSuperview(of other: UIView) -> Bool {
-        return other.superview === self
-    }
 }
