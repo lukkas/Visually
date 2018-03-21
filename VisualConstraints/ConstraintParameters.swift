@@ -8,22 +8,12 @@
 
 import Foundation
 
-public struct ConstraintParameters: ExpressibleByIntegerLiteral, ExpressibleByFloatLiteral {
+public struct ConstraintParameters {
     public let constant: CGFloat
     public let priority: UILayoutPriority
     
     public init(constant: CGFloat = 0, priority: UILayoutPriority = .required) {
         self.constant = constant
         self.priority = priority
-    }
-    
-    public init(integerLiteral value: Int) {
-        constant = CGFloat(value)
-        priority = .required
-    }
-    
-    public init(floatLiteral value: Float) {
-        constant = CGFloat(value)
-        priority = .required
     }
 }
