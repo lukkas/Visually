@@ -9,23 +9,55 @@
 import Foundation
 
 public extension UIView {
-    public func length(_ value: CGFloat, relation: NSLayoutRelation = .equal, priority: Float) -> BuildPoint {
-        return length(value, relation: relation, priority: UILayoutPriority(priority))
+    public func equal(_ value: CGFloat) -> BuildPoint {
+        return equal(ConstraintParameters(constant: value, priority: .required))
     }
     
-    public func length(_ value: CGFloat, relation: NSLayoutRelation = .equal, priority: UILayoutPriority = .required) -> BuildPoint {
+    public func equal(_ value: ConstraintParameters) -> BuildPoint {
         let constraint: Constraint = { axis in
             let c: NSLayoutConstraint = {
-                switch (axis, relation) {
-                case (.horizontal, .equal): return self.widthAnchor.constraint(equalToConstant: value)
-                case (.horizontal, .greaterThanOrEqual): return self.widthAnchor.constraint(greaterThanOrEqualToConstant: value)
-                case (.horizontal, .lessThanOrEqual): return self.widthAnchor.constraint(lessThanOrEqualToConstant: value)
-                case (.vertical, .equal): return self.heightAnchor.constraint(equalToConstant: value)
-                case (.vertical, .greaterThanOrEqual): return self.heightAnchor.constraint(greaterThanOrEqualToConstant: value)
-                case (.vertical, .lessThanOrEqual): return self.heightAnchor.constraint(lessThanOrEqualToConstant: value)
+                switch axis {
+                case .horizontal: return self.widthAnchor.constraint(equalToConstant: value.constant)
+                case .vertical: return self.heightAnchor.constraint(equalToConstant: value.constant)
                 }
             }()
-            c.priority = priority
+            c.priority = value.priority
+            return c
+        }
+        return BuildPoint(constraints: [constraint], view: self)
+    }
+    
+    public func greaterThanOrEqual(_ value: CGFloat) -> BuildPoint {
+        return equal(ConstraintParameters(constant: value, priority: .required))
+    }
+    
+    public func greaterThanOrEqual(_ value: ConstraintParameters) -> BuildPoint {
+        let constraint: Constraint = { axis in
+            let c: NSLayoutConstraint = {
+                switch axis {
+                case .horizontal: return self.widthAnchor.constraint(greaterThanOrEqualToConstant: value.constant)
+                case .vertical: return self.heightAnchor.constraint(greaterThanOrEqualToConstant: value.constant)
+                }
+            }()
+            c.priority = value.priority
+            return c
+        }
+        return BuildPoint(constraints: [constraint], view: self)
+    }
+    
+    public func lessThanOrEqual(_ value: CGFloat) -> BuildPoint {
+        return equal(ConstraintParameters(constant: value, priority: .required))
+    }
+    
+    public func lessThanOrEqual(_ value: ConstraintParameters) -> BuildPoint {
+        let constraint: Constraint = { axis in
+            let c: NSLayoutConstraint = {
+                switch axis {
+                case .horizontal: return self.widthAnchor.constraint(lessThanOrEqualToConstant: value.constant)
+                case .vertical: return self.heightAnchor.constraint(lessThanOrEqualToConstant: value.constant)
+                }
+            }()
+            c.priority = value.priority
             return c
         }
         return BuildPoint(constraints: [constraint], view: self)

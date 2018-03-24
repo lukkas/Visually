@@ -67,7 +67,7 @@ class VisualConstraintsTests: XCTestCase {
     
     func testView2TakesRemainingWidth_whenPinnedToViewThatTakesArbitraryWidth() {
         let constraints = [
-            H(|-view1.length(50)-view2-|),
+            H(|-view1.equal(50)-view2-|),
             V(|-view1-|),
             V(|-view2-|)
         ].flatMap({ $0 })
@@ -78,7 +78,7 @@ class VisualConstraintsTests: XCTestCase {
     
     func testView2TakesRemainingWidth_whenItHasArbitraryWidthSetButOfLowerPriorityThanView1AndSpacingConstraint() {
         let constraints = [
-            H(|-view1.length(50)-20-view2.length(50, priority: 500)-|),
+            H(|-view1.equal(50)-20-view2.equal(50~500)-|),
             V(|-view1-|),
             V(|-view2-|)
             ].flatMap({ $0 })
@@ -89,7 +89,7 @@ class VisualConstraintsTests: XCTestCase {
     
     func testView2TakesRemainingWidth_whenItHasArbitraryWidthSetButOfLowerPriorityThanView1AndGreaterThanOrEqualSpacingConstraint() {
         let constraints = [
-            H(|-view1.length(50)->=20-view2.length(50, priority: 500)-|),
+            H(|-view1.equal(50)->=20-view2.equal(50~500)-|),
             V(|-view1-|),
             V(|-view2-|)
             ].flatMap({ $0 })
@@ -102,7 +102,7 @@ class VisualConstraintsTests: XCTestCase {
         let constraints = [
             H(|-view1-|),
             H(|-view2-|),
-            V(|-view1.length(50)->=20-view2.length(50, priority: 500)-|)
+            V(|-view1.equal(50)->=20-view2.equal(50~500)-|)
             ].flatMap({ $0 })
         NSLayoutConstraint.activate(constraints)
         superview.layoutIfNeeded()
@@ -113,7 +113,7 @@ class VisualConstraintsTests: XCTestCase {
         let constraints = [
             H(|-view1-|),
             H(|-view2-|),
-            V(|-view1.length(50, priority: 500)->=20-view2.length(50, relation: .greaterThanOrEqual)-|)
+            V(|-view1.equal(50~500)->=20-view2.greaterThanOrEqual(50)-|)
             ].flatMap({ $0 })
         NSLayoutConstraint.activate(constraints)
         superview.layoutIfNeeded()
@@ -122,7 +122,7 @@ class VisualConstraintsTests: XCTestCase {
     
     func testViewWidthIs80_whenItsWidthFillsSuperviewUpButTrailingGreaterThanOrEqualConstriantPushesItIn() {
         let constraints = [
-            H(|-view1.length(100, priority: 900)->=20-|),
+            H(|-view1.equal(100~900)->=20-|),
             V(|-view1-|)
             ].flatMap({ $0 })
         NSLayoutConstraint.activate(constraints)
@@ -132,7 +132,7 @@ class VisualConstraintsTests: XCTestCase {
     
     func testViewWidthIs80_whenItsWidthFillsSuperviewUpButLeadingGreaterThanOrEqualConstriantPushesItIn() {
         let constraints = [
-            H(|->=20-view1.length(100, priority: 900)-|),
+            H(|->=20-view1.equal(100~900)-|),
             V(|-view1-|)
             ].flatMap({ $0 })
         NSLayoutConstraint.activate(constraints)
@@ -142,7 +142,7 @@ class VisualConstraintsTests: XCTestCase {
     
     func testViewWidthIs80_whenItsWidthIsFalfOfSuperviewUpButLeadingLessThanOrEqualConstraintStretchesItOut() {
         let constraints = [
-            H(|-<=20-view1.length(50, priority: 900)-|),
+            H(|-<=20-view1.equal(50~900)-|),
             V(|-view1-|)
             ].flatMap({ $0 })
         NSLayoutConstraint.activate(constraints)
@@ -152,7 +152,7 @@ class VisualConstraintsTests: XCTestCase {
     
     func testViewIsKeptWithinSuperviewBounds_whenItsWidthIsLargerThanSuperviewButItHasTrailingGreaterThanOrEqualConstraint() {
         let constraints = [
-            H(|-view1.length(120, priority: 900)->=-|),
+            H(|-view1.equal(120~900)->=-|),
             V(|-view1-|)
             ].flatMap({ $0 })
         NSLayoutConstraint.activate(constraints)
@@ -162,7 +162,7 @@ class VisualConstraintsTests: XCTestCase {
     
     func testViewIsKeptWithinSuperviewBounds_whenItsWidthIsLargerThanSuperviewButItHasLeadingGreaterThanOrEqualConstraint() {
         let constraints = [
-            H(|->=-view1.length(120, priority: 900)-|),
+            H(|->=-view1.equal(120~900)-|),
             V(|-view1-|)
             ].flatMap({ $0 })
         NSLayoutConstraint.activate(constraints)
@@ -173,7 +173,7 @@ class VisualConstraintsTests: XCTestCase {
     func testViewIsKeptWithinSuperviewBounds_whenItsHeightIsLargerThanSuperviewButItHasBottomGreaterThanOrEqualConstraint() {
         let constraints = [
             H(|-view1-|),
-            V(|-view1.length(120, priority: 900)->=-|)
+            V(|-view1.equal(120~900)->=-|)
             ].flatMap({ $0 })
         NSLayoutConstraint.activate(constraints)
         superview.layoutIfNeeded()
@@ -183,7 +183,7 @@ class VisualConstraintsTests: XCTestCase {
     func testViewIsKeptWithinSuperviewBounds_whenItsHeightIsLargerThanSuperviewButItHasTopGreaterThanOrEqualConstraint() {
         let constraints = [
             H(|-view1-|),
-            V(|->=-view1.length(120, priority: 900)-|)
+            V(|->=-view1.equal(120~900)-|)
             ].flatMap({ $0 })
         NSLayoutConstraint.activate(constraints)
         superview.layoutIfNeeded()
