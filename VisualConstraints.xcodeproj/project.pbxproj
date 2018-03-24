@@ -11,7 +11,6 @@
 		B23B995E205D58E600B0A50F /* VisualConstraintsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23B995D205D58E600B0A50F /* VisualConstraintsTests.swift */; };
 		B23B9960205D58E600B0A50F /* VisualConstraints.h in Headers */ = {isa = PBXBuildFile; fileRef = B23B9952205D58E600B0A50F /* VisualConstraints.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B23B996E205D5A4E00B0A50F /* ConstraintParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23B9969205D5A4E00B0A50F /* ConstraintParameters.swift */; };
-		B23B996F205D5A4E00B0A50F /* UILayoutPriorities.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23B996A205D5A4E00B0A50F /* UILayoutPriorities.swift */; };
 		B23B9970205D5A4E00B0A50F /* OperatorDefinitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23B996B205D5A4E00B0A50F /* OperatorDefinitions.swift */; };
 		B23B9971205D5A4E00B0A50F /* OperatorImplementations.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23B996C205D5A4E00B0A50F /* OperatorImplementations.swift */; };
 		B23B9972205D5A4E00B0A50F /* BuildPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23B996D205D5A4E00B0A50F /* BuildPoints.swift */; };
@@ -39,7 +38,6 @@
 		B23B995D205D58E600B0A50F /* VisualConstraintsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualConstraintsTests.swift; sourceTree = "<group>"; };
 		B23B995F205D58E600B0A50F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B23B9969205D5A4E00B0A50F /* ConstraintParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstraintParameters.swift; sourceTree = "<group>"; };
-		B23B996A205D5A4E00B0A50F /* UILayoutPriorities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILayoutPriorities.swift; sourceTree = "<group>"; };
 		B23B996B205D5A4E00B0A50F /* OperatorDefinitions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperatorDefinitions.swift; sourceTree = "<group>"; };
 		B23B996C205D5A4E00B0A50F /* OperatorImplementations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperatorImplementations.swift; sourceTree = "<group>"; };
 		B23B996D205D5A4E00B0A50F /* BuildPoints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildPoints.swift; sourceTree = "<group>"; };
@@ -95,7 +93,6 @@
 				B23B9969205D5A4E00B0A50F /* ConstraintParameters.swift */,
 				B23B996B205D5A4E00B0A50F /* OperatorDefinitions.swift */,
 				B23B996C205D5A4E00B0A50F /* OperatorImplementations.swift */,
-				B23B996A205D5A4E00B0A50F /* UILayoutPriorities.swift */,
 				B25B7589206170AA007473F3 /* BuildPointConvertible.swift */,
 				B25B758D20617349007473F3 /* UIView+Size.swift */,
 				B25B758F206173A2007473F3 /* BuildPointsToConstraintsConversion.swift */,
@@ -231,7 +228,6 @@
 				B25B7590206173A2007473F3 /* BuildPointsToConstraintsConversion.swift in Sources */,
 				B25B758A206170AA007473F3 /* BuildPointConvertible.swift in Sources */,
 				B23B996E205D5A4E00B0A50F /* ConstraintParameters.swift in Sources */,
-				B23B996F205D5A4E00B0A50F /* UILayoutPriorities.swift in Sources */,
 				B25B759220617428007473F3 /* ConstraintParametersConvenienceCreation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
