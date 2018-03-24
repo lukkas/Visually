@@ -17,7 +17,6 @@
 		B25B758A206170AA007473F3 /* BuildPointConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25B7589206170AA007473F3 /* BuildPointConvertible.swift */; };
 		B25B758E20617349007473F3 /* UIView+Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25B758D20617349007473F3 /* UIView+Size.swift */; };
 		B25B7590206173A2007473F3 /* BuildPointsToConstraintsConversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25B758F206173A2007473F3 /* BuildPointsToConstraintsConversion.swift */; };
-		B25B759220617428007473F3 /* ConstraintParametersConvenienceCreation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25B759120617428007473F3 /* ConstraintParametersConvenienceCreation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,7 +43,6 @@
 		B25B7589206170AA007473F3 /* BuildPointConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildPointConvertible.swift; sourceTree = "<group>"; };
 		B25B758D20617349007473F3 /* UIView+Size.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Size.swift"; sourceTree = "<group>"; };
 		B25B758F206173A2007473F3 /* BuildPointsToConstraintsConversion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildPointsToConstraintsConversion.swift; sourceTree = "<group>"; };
-		B25B759120617428007473F3 /* ConstraintParametersConvenienceCreation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstraintParametersConvenienceCreation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,7 +94,6 @@
 				B25B7589206170AA007473F3 /* BuildPointConvertible.swift */,
 				B25B758D20617349007473F3 /* UIView+Size.swift */,
 				B25B758F206173A2007473F3 /* BuildPointsToConstraintsConversion.swift */,
-				B25B759120617428007473F3 /* ConstraintParametersConvenienceCreation.swift */,
 			);
 			path = VisualConstraints;
 			sourceTree = "<group>";
@@ -228,7 +225,6 @@
 				B25B7590206173A2007473F3 /* BuildPointsToConstraintsConversion.swift in Sources */,
 				B25B758A206170AA007473F3 /* BuildPointConvertible.swift in Sources */,
 				B23B996E205D5A4E00B0A50F /* ConstraintParameters.swift in Sources */,
-				B25B759220617428007473F3 /* ConstraintParametersConvenienceCreation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -55,7 +55,7 @@ class VisualConstraintsTests: XCTestCase {
     }
     
     func testLastConstraintIsOfPriority750_whenPrioritySetWithIntegerExtension() {
-        let constraints = H(|-view1-view2-20.priority(750)-|)
+        let constraints = H(|-view1-view2-(20~750)-|)
         XCTAssertEqual(constraints[2].priority, UILayoutPriority(750))
     }
     

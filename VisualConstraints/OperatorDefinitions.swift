@@ -8,6 +8,10 @@
 
 import Foundation
 
+/**
+* Leading superview edge
+* constraint operators.
+*/
 prefix operator |-
 prefix operator |->=
 prefix operator |-<=
@@ -15,6 +19,7 @@ prefix operator |->=-
 prefix operator |-<=-
 
 /**
+* Siblings constraint operators.
 * Use addition precedence in order
 * to equalize it with "-" operator,
 * which is widely used in defining
@@ -26,6 +31,19 @@ infix operator -<=- : AdditionPrecedence
 infix operator ->= : AdditionPrecedence
 infix operator -<= : AdditionPrecedence
 
+/**
+ * Trailing superview edge
+ * constraint operators.
+ */
 postfix operator -|
 postfix operator ->=-|
 postfix operator -<=-|
+
+/**
+ * Priority operator
+ */
+precedencegroup ConstraintPriorityPrecedence {
+    higherThan: AdditionPrecedence
+}
+
+infix operator ~ : ConstraintPriorityPrecedence

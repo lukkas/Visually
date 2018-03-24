@@ -257,6 +257,14 @@ public postfix func -<=-| (lhs: BuildPointConvertible) -> BuildPoint {
     return BuildPoint(constraints: constraints + [constraint], view: view)
 }
 
+public func ~ (lhs: CGFloat, rhs: UILayoutPriority) -> ConstraintParameters {
+    return ConstraintParameters(constant: lhs, priority: rhs)
+}
+
+public func ~ (lhs: CGFloat, rhs: Float) -> ConstraintParameters {
+    return ConstraintParameters(constant: lhs, priority: UILayoutPriority(rhs))
+}
+
 private extension BuildPointConvertible {
     func decompose() -> (UIView, [Constraint]) {
         let bp = buildPoint()
