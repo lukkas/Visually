@@ -7,8 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B23B9959205D58E600B0A50F /* VisualConstraints.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B23B994F205D58E600B0A50F /* VisualConstraints.framework */; };
-		B23B995E205D58E600B0A50F /* VisualConstraintsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23B995D205D58E600B0A50F /* VisualConstraintsTests.swift */; };
+		B23B9959205D58E600B0A50F /* Visually.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B23B994F205D58E600B0A50F /* Visually.framework */; };
 		B23B9960205D58E600B0A50F /* VisualConstraints.h in Headers */ = {isa = PBXBuildFile; fileRef = B23B9952205D58E600B0A50F /* VisualConstraints.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B23B996E205D5A4E00B0A50F /* ConstraintParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23B9969205D5A4E00B0A50F /* ConstraintParameters.swift */; };
 		B23B9970205D5A4E00B0A50F /* OperatorDefinitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23B996B205D5A4E00B0A50F /* OperatorDefinitions.swift */; };
@@ -17,6 +16,7 @@
 		B25B758A206170AA007473F3 /* BuildPointConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25B7589206170AA007473F3 /* BuildPointConvertible.swift */; };
 		B25B758E20617349007473F3 /* UIView+Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25B758D20617349007473F3 /* UIView+Size.swift */; };
 		B25B7590206173A2007473F3 /* BuildPointsToConstraintsConversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25B758F206173A2007473F3 /* BuildPointsToConstraintsConversion.swift */; };
+		B2AC342D207148350004253E /* VisuallyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2AC342C207148350004253E /* VisuallyTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,11 +30,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		B23B994F205D58E600B0A50F /* VisualConstraints.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VisualConstraints.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B23B994F205D58E600B0A50F /* Visually.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Visually.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B23B9952205D58E600B0A50F /* VisualConstraints.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VisualConstraints.h; sourceTree = "<group>"; };
 		B23B9953205D58E600B0A50F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B23B9958205D58E600B0A50F /* VisualConstraintsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VisualConstraintsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B23B995D205D58E600B0A50F /* VisualConstraintsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualConstraintsTests.swift; sourceTree = "<group>"; };
+		B23B9958205D58E600B0A50F /* VisuallyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VisuallyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B23B995F205D58E600B0A50F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B23B9969205D5A4E00B0A50F /* ConstraintParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstraintParameters.swift; sourceTree = "<group>"; };
 		B23B996B205D5A4E00B0A50F /* OperatorDefinitions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperatorDefinitions.swift; sourceTree = "<group>"; };
@@ -43,6 +42,7 @@
 		B25B7589206170AA007473F3 /* BuildPointConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildPointConvertible.swift; sourceTree = "<group>"; };
 		B25B758D20617349007473F3 /* UIView+Size.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Size.swift"; sourceTree = "<group>"; };
 		B25B758F206173A2007473F3 /* BuildPointsToConstraintsConversion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildPointsToConstraintsConversion.swift; sourceTree = "<group>"; };
+		B2AC342C207148350004253E /* VisuallyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisuallyTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,7 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B23B9959205D58E600B0A50F /* VisualConstraints.framework in Frameworks */,
+				B23B9959205D58E600B0A50F /* Visually.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,8 +67,8 @@
 		B23B9945205D58E600B0A50F = {
 			isa = PBXGroup;
 			children = (
-				B23B9951205D58E600B0A50F /* VisualConstraints */,
-				B23B995C205D58E600B0A50F /* VisualConstraintsTests */,
+				B23B9951205D58E600B0A50F /* Visually */,
+				B23B995C205D58E600B0A50F /* VisuallyTests */,
 				B23B9950205D58E600B0A50F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -76,13 +76,13 @@
 		B23B9950205D58E600B0A50F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B23B994F205D58E600B0A50F /* VisualConstraints.framework */,
-				B23B9958205D58E600B0A50F /* VisualConstraintsTests.xctest */,
+				B23B994F205D58E600B0A50F /* Visually.framework */,
+				B23B9958205D58E600B0A50F /* VisuallyTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		B23B9951205D58E600B0A50F /* VisualConstraints */ = {
+		B23B9951205D58E600B0A50F /* Visually */ = {
 			isa = PBXGroup;
 			children = (
 				B23B9952205D58E600B0A50F /* VisualConstraints.h */,
@@ -95,16 +95,16 @@
 				B25B758D20617349007473F3 /* UIView+Size.swift */,
 				B25B758F206173A2007473F3 /* BuildPointsToConstraintsConversion.swift */,
 			);
-			path = VisualConstraints;
+			path = Visually;
 			sourceTree = "<group>";
 		};
-		B23B995C205D58E600B0A50F /* VisualConstraintsTests */ = {
+		B23B995C205D58E600B0A50F /* VisuallyTests */ = {
 			isa = PBXGroup;
 			children = (
-				B23B995D205D58E600B0A50F /* VisualConstraintsTests.swift */,
 				B23B995F205D58E600B0A50F /* Info.plist */,
+				B2AC342C207148350004253E /* VisuallyTests.swift */,
 			);
-			path = VisualConstraintsTests;
+			path = VisuallyTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -121,9 +121,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		B23B994E205D58E600B0A50F /* VisualConstraints */ = {
+		B23B994E205D58E600B0A50F /* Visually */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B23B9963205D58E600B0A50F /* Build configuration list for PBXNativeTarget "VisualConstraints" */;
+			buildConfigurationList = B23B9963205D58E600B0A50F /* Build configuration list for PBXNativeTarget "Visually" */;
 			buildPhases = (
 				B23B994A205D58E600B0A50F /* Sources */,
 				B23B994B205D58E600B0A50F /* Frameworks */,
@@ -134,14 +134,14 @@
 			);
 			dependencies = (
 			);
-			name = VisualConstraints;
+			name = Visually;
 			productName = VisualConstraints;
-			productReference = B23B994F205D58E600B0A50F /* VisualConstraints.framework */;
+			productReference = B23B994F205D58E600B0A50F /* Visually.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		B23B9957205D58E600B0A50F /* VisualConstraintsTests */ = {
+		B23B9957205D58E600B0A50F /* VisuallyTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B23B9966205D58E600B0A50F /* Build configuration list for PBXNativeTarget "VisualConstraintsTests" */;
+			buildConfigurationList = B23B9966205D58E600B0A50F /* Build configuration list for PBXNativeTarget "VisuallyTests" */;
 			buildPhases = (
 				B23B9954205D58E600B0A50F /* Sources */,
 				B23B9955205D58E600B0A50F /* Frameworks */,
@@ -152,9 +152,9 @@
 			dependencies = (
 				B23B995B205D58E600B0A50F /* PBXTargetDependency */,
 			);
-			name = VisualConstraintsTests;
+			name = VisuallyTests;
 			productName = VisualConstraintsTests;
-			productReference = B23B9958205D58E600B0A50F /* VisualConstraintsTests.xctest */;
+			productReference = B23B9958205D58E600B0A50F /* VisuallyTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -178,7 +178,7 @@
 					};
 				};
 			};
-			buildConfigurationList = B23B9949205D58E600B0A50F /* Build configuration list for PBXProject "VisualConstraints" */;
+			buildConfigurationList = B23B9949205D58E600B0A50F /* Build configuration list for PBXProject "Visually" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -190,8 +190,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B23B994E205D58E600B0A50F /* VisualConstraints */,
-				B23B9957205D58E600B0A50F /* VisualConstraintsTests */,
+				B23B994E205D58E600B0A50F /* Visually */,
+				B23B9957205D58E600B0A50F /* VisuallyTests */,
 			);
 		};
 /* End PBXProject section */
@@ -232,7 +232,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B23B995E205D58E600B0A50F /* VisualConstraintsTests.swift in Sources */,
+				B2AC342D207148350004253E /* VisuallyTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,7 +241,7 @@
 /* Begin PBXTargetDependency section */
 		B23B995B205D58E600B0A50F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = B23B994E205D58E600B0A50F /* VisualConstraints */;
+			target = B23B994E205D58E600B0A50F /* Visually */;
 			targetProxy = B23B995A205D58E600B0A50F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -371,11 +371,11 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = VisualConstraints/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Visually/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.appunite.VisualConstraints;
+				PRODUCT_BUNDLE_IDENTIFIER = com.appunite.Visually;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -395,11 +395,11 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = VisualConstraints/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Visually/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.appunite.VisualConstraints;
+				PRODUCT_BUNDLE_IDENTIFIER = com.appunite.Visually;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
@@ -413,9 +413,9 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = E6WRHQXQE9;
-				INFOPLIST_FILE = VisualConstraintsTests/Info.plist;
+				INFOPLIST_FILE = VisuallyTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.appunite.VisualConstraintsTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.appunite.VisuallyTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -428,9 +428,9 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = E6WRHQXQE9;
-				INFOPLIST_FILE = VisualConstraintsTests/Info.plist;
+				INFOPLIST_FILE = VisuallyTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.appunite.VisualConstraintsTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.appunite.VisuallyTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -440,7 +440,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		B23B9949205D58E600B0A50F /* Build configuration list for PBXProject "VisualConstraints" */ = {
+		B23B9949205D58E600B0A50F /* Build configuration list for PBXProject "Visually" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B23B9961205D58E600B0A50F /* Debug */,
@@ -449,7 +449,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B23B9963205D58E600B0A50F /* Build configuration list for PBXNativeTarget "VisualConstraints" */ = {
+		B23B9963205D58E600B0A50F /* Build configuration list for PBXNativeTarget "Visually" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B23B9964205D58E600B0A50F /* Debug */,
@@ -458,7 +458,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B23B9966205D58E600B0A50F /* Build configuration list for PBXNativeTarget "VisualConstraintsTests" */ = {
+		B23B9966205D58E600B0A50F /* Build configuration list for PBXNativeTarget "VisuallyTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B23B9967205D58E600B0A50F /* Debug */,

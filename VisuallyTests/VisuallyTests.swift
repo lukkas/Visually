@@ -1,15 +1,15 @@
 //
-//  VisualConstraintsTests.swift
-//  VisualConstraintsTests
+//  VisuallyTests.swift
+//  VisuallyTests
 //
-//  Created by Łukasz Kasperek on 17.03.2018.
+//  Created by Łukasz Kasperek on 01.04.2018.
 //  Copyright © 2018 AppUnite. All rights reserved.
 //
 
 import XCTest
-@testable import VisualConstraints
+@testable import Visually
 
-class VisualConstraintsTests: XCTestCase {
+class VisuallyTests: XCTestCase {
     private var superview: UIView!
     private var view1: UIView!
     private var view2: UIView!
@@ -70,7 +70,7 @@ class VisualConstraintsTests: XCTestCase {
             H(|-view1.equal(50)-view2-|),
             V(|-view1-|),
             V(|-view2-|)
-        ].flatMap({ $0 })
+            ].flatMap({ $0 })
         NSLayoutConstraint.activate(constraints)
         superview.layoutIfNeeded()
         XCTAssertEqual(view2.frame.width, 50)

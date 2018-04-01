@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 public extension UIView {
     public func equal(_ value: CGFloat) -> BuildPoint {
