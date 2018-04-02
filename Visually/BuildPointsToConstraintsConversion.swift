@@ -7,7 +7,11 @@
 //
 
 import Foundation
+#if os(iOS) || os(tvOS)
 import UIKit
+#elseif os(OSX)
+import AppKit
+#endif
 
 public func H(_ buildPoint: BuildPoint) -> [NSLayoutConstraint] {
     return buildPoint.constraints.map({ $0(.horizontal) })

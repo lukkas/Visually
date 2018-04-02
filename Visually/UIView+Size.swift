@@ -7,9 +7,13 @@
 //
 
 import Foundation
+#if os(iOS) || os(tvOS)
 import UIKit
+#elseif os(OSX)
+import AppKit
+#endif
 
-public extension UIView {
+public extension View {
     public func equal(_ value: CGFloat) -> BuildPoint {
         return equal(ConstraintParameters(constant: value, priority: .required))
     }

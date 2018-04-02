@@ -6,7 +6,11 @@
 //  Copyright © 2018 AppUnite. All rights reserved.
 //
 
+#if os(iOS) || os(tvOS)
 import UIKit
+#elseif os(OSX)
+import AppKit
+#endif
 
 public prefix func |- (constant: CGFloat) -> OpeningBuildPoint {
     let parameters = ConstraintParameters(constant: constant)
@@ -257,21 +261,21 @@ public postfix func -<=-| (lhs: BuildPointConvertible) -> BuildPoint {
     return BuildPoint(constraints: constraints + [constraint], view: view)
 }
 
-public func ~ (lhs: CGFloat, rhs: UILayoutPriority) -> ConstraintParameters {
+public func ~ (lhs: CGFloat, rhs: LayoutPriority) -> ConstraintParameters {
     return ConstraintParameters(constant: lhs, priority: rhs)
 }
 
 public func ~ (lhs: CGFloat, rhs: Float) -> ConstraintParameters {
-    return ConstraintParameters(constant: lhs, priority: UILayoutPriority(rhs))
+    return ConstraintParameters(constant: lhs, priority: LayoutPriority(rhs))
 }
 
 private extension BuildPointConvertible {
-    func decompose() -> (UIView, [Constraint]) {
+    func decompose() -> (View, [Constraint]) {
         let bp = buildPoint()
         return (bp.view, bp.constraints)
     }
     
-    func decomposeWithSuperview() -> (UIView, UIView, [Constraint]) {
+    func decomposeWithSuperview() -> (View, View, [Constraint]) {
         let (view, constraints) = decompose()
         guard let superview = view.superview else {
             throwMissingSuperviewException()

@@ -10,18 +10,20 @@ import XCTest
 @testable import Visually
 
 class VisuallyTests: XCTestCase {
-    private var superview: UIView!
-    private var view1: UIView!
-    private var view2: UIView!
-    private var view3: UIView!
+    private var superview: View!
+    private var view1: View!
+    private var view2: View!
+    private var view3: View!
     private let superviewSize = CGSize(width: 100, height: 100)
     
     override func setUp() {
         super.setUp()
-        superview = UIView(frame: CGRect(origin: .zero, size: superviewSize))
-        view1 = UIView()
-        view2 = UIView()
-        view3 = UIView()
+        superview = View(frame: CGRect(origin: .zero, size: superviewSize))
+        superview.addConstraints([superview.widthAnchor.constraint(equalToConstant: superviewSize.width),
+                                 superview.heightAnchor.constraint(equalToConstant: superviewSize.height)])
+        view1 = View()
+        view2 = View()
+        view3 = View()
         view1.translatesAutoresizingMaskIntoConstraints = false
         view2.translatesAutoresizingMaskIntoConstraints = false
         view3.translatesAutoresizingMaskIntoConstraints = false
@@ -56,7 +58,7 @@ class VisuallyTests: XCTestCase {
     
     func testLastConstraintIsOfPriority750_whenPrioritySetWithIntegerExtension() {
         let constraints = H(|-view1-view2-(20~750)-|)
-        XCTAssertEqual(constraints[2].priority, UILayoutPriority(750))
+        XCTAssertEqual(constraints[2].priority, LayoutPriority(750))
     }
     
     func testMiddleConstraintConstantIsGreaterThanOrEqual100_whenSuchValueIsSet() {
@@ -72,7 +74,7 @@ class VisuallyTests: XCTestCase {
             V(|-view2-|)
             ].flatMap({ $0 })
         NSLayoutConstraint.activate(constraints)
-        superview.layoutIfNeeded()
+        superview._layout()
         XCTAssertEqual(view2.frame.width, 50)
     }
     
@@ -83,7 +85,7 @@ class VisuallyTests: XCTestCase {
             V(|-view2-|)
             ].flatMap({ $0 })
         NSLayoutConstraint.activate(constraints)
-        superview.layoutIfNeeded()
+        superview._layout()
         XCTAssertEqual(view2.frame.width, 30)
     }
     
@@ -94,7 +96,7 @@ class VisuallyTests: XCTestCase {
             V(|-view2-|)
             ].flatMap({ $0 })
         NSLayoutConstraint.activate(constraints)
-        superview.layoutIfNeeded()
+        superview._layout()
         XCTAssertEqual(view2.frame.width, 30)
     }
     
@@ -105,7 +107,7 @@ class VisuallyTests: XCTestCase {
             V(|-view1.equal(50)->=20-view2.equal(50~500)-|)
             ].flatMap({ $0 })
         NSLayoutConstraint.activate(constraints)
-        superview.layoutIfNeeded()
+        superview._layout()
         XCTAssertEqual(view2.frame.height, 30)
     }
     
@@ -116,7 +118,7 @@ class VisuallyTests: XCTestCase {
             V(|-view1.equal(50~500)->=20-view2.greaterThanOrEqual(50)-|)
             ].flatMap({ $0 })
         NSLayoutConstraint.activate(constraints)
-        superview.layoutIfNeeded()
+        superview._layout()
         XCTAssertEqual(view2.frame.height, 50)
     }
     
@@ -126,7 +128,7 @@ class VisuallyTests: XCTestCase {
             V(|-view1-|)
             ].flatMap({ $0 })
         NSLayoutConstraint.activate(constraints)
-        superview.layoutIfNeeded()
+        superview._layout()
         XCTAssertEqual(view1.frame.width, 80)
     }
     
@@ -136,7 +138,7 @@ class VisuallyTests: XCTestCase {
             V(|-view1-|)
             ].flatMap({ $0 })
         NSLayoutConstraint.activate(constraints)
-        superview.layoutIfNeeded()
+        superview._layout()
         XCTAssertEqual(view1.frame.width, 80)
     }
     
@@ -146,7 +148,7 @@ class VisuallyTests: XCTestCase {
             V(|-view1-|)
             ].flatMap({ $0 })
         NSLayoutConstraint.activate(constraints)
-        superview.layoutIfNeeded()
+        superview._layout()
         XCTAssertEqual(view1.frame.width, 80)
     }
     
@@ -156,17 +158,17 @@ class VisuallyTests: XCTestCase {
             V(|-view1-|)
             ].flatMap({ $0 })
         NSLayoutConstraint.activate(constraints)
-        superview.layoutIfNeeded()
+        superview._layout()
         XCTAssertEqual(view1.frame.width, 100)
     }
     
     func testViewIsKeptWithinSuperviewBounds_whenItsWidthIsLargerThanSuperviewButItHasLeadingGreaterThanOrEqualConstraint() {
         let constraints = [
-            H(|->=-view1.equal(120~900)-|),
+            H(|->=-view1.equal(120~LayoutPriority.defaultHigh)-|),
             V(|-view1-|)
             ].flatMap({ $0 })
         NSLayoutConstraint.activate(constraints)
-        superview.layoutIfNeeded()
+        superview._layout()
         XCTAssertEqual(view1.frame.width, 100)
     }
     
@@ -176,8 +178,8 @@ class VisuallyTests: XCTestCase {
             V(|-view1.equal(120~900)->=-|)
             ].flatMap({ $0 })
         NSLayoutConstraint.activate(constraints)
-        superview.layoutIfNeeded()
-        XCTAssertEqual(view1.frame.width, 100)
+        superview._layout()
+        XCTAssertEqual(view1.frame.height, 100)
     }
     
     func testViewIsKeptWithinSuperviewBounds_whenItsHeightIsLargerThanSuperviewButItHasTopGreaterThanOrEqualConstraint() {
@@ -186,7 +188,17 @@ class VisuallyTests: XCTestCase {
             V(|->=-view1.equal(120~900)-|)
             ].flatMap({ $0 })
         NSLayoutConstraint.activate(constraints)
-        superview.layoutIfNeeded()
-        XCTAssertEqual(view1.frame.width, 100)
+        superview._layout()
+        XCTAssertEqual(view1.frame.height, 100)
+    }
+}
+
+private extension View {
+    func _layout() {
+        #if os(iOS) || os(tvOS)
+        layoutIfNeeded()
+        #elseif os(OSX)
+        layoutSubtreeIfNeeded()
+        #endif
     }
 }

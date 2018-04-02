@@ -7,7 +7,11 @@
 //
 
 import Foundation
+#if os(iOS) || os(tvOS)
 import UIKit
+#elseif os(OSX)
+import AppKit
+#endif
 
 public protocol BuildPointConvertible {
     func buildPoint() -> BuildPoint
@@ -19,7 +23,7 @@ extension BuildPoint: BuildPointConvertible {
     }
 }
 
-extension UIView: BuildPointConvertible {
+extension View: BuildPointConvertible {
     public func buildPoint() -> BuildPoint {
         return BuildPoint(constraints: [], view: self)
     }

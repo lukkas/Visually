@@ -1,0 +1,15 @@
+//
+//  Visually.xcconfig
+//  Visually
+//
+//  Created by Łukasz Kasperek on 02.04.2018.
+//  Copyright © 2018 AppUnite. All rights reserved.
+//
+
+SUPPORTED_PLATFORMS = iphonesimulator iphoneos macosx appletvos appletvsimulator
+
+IPHONEOS_DEPLOYMENT_TARGET = 9.0
+MACOSX_DEPLOYMENT_TARGET = 10.11
+TVOS_DEPLOYMENT_TARGET = 9.0
+
+TARGETED_DEVICE_FAMILY = 1,2,3

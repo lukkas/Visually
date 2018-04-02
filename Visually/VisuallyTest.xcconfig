@@ -1,0 +1,12 @@
+//
+//  VisuallyTest.xcconfig
+//  Visually
+//
+//  Created by Łukasz Kasperek on 02.04.2018.
+//  Copyright © 2018 AppUnite. All rights reserved.
+//
+
+#include "Visually.xcconfig"
+
+LD_RUNPATH_SEARCH_PATHS = @executable_path/Frameworks @loader_path/Frameworks
+LD_RUNPATH_SEARCH_PATHS[sdk=macosx*] = @executable_path/../Frameworks @loader_path/../Frameworks

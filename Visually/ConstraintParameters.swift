@@ -7,13 +7,17 @@
 //
 
 import Foundation
+#if os(iOS) || os(tvOS)
 import UIKit
+#elseif os(OSX)
+import AppKit
+#endif
 
 public struct ConstraintParameters {
     public let constant: CGFloat
-    public let priority: UILayoutPriority
+    public let priority: LayoutPriority
     
-    public init(constant: CGFloat = 0, priority: UILayoutPriority = .required) {
+    public init(constant: CGFloat = 0, priority: LayoutPriority = .required) {
         self.constant = constant
         self.priority = priority
     }
