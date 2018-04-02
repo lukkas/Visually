@@ -19,8 +19,13 @@ Pod::Spec.new do |s|
   s.license      = "MIT"
   s.author             = { "Lukasz Kasperek" => "luk.kasperek@gmail.com" }
   s.social_media_url   = "http://twitter.com/LukaszKasperek"
-  s.platform     = :ios, "9.0"
+
+  s.ios.deployment_target = "9.0"
+  s.osx.deployment_target = "10.11"
+  s.tvos.deployment_target = "9.0"
+
   s.source       = { :git => "http://github/lukkas/Visually.git", :tag => "#{s.version}" }
   s.source_files  = "Visually"
-  s.framework  = "UIKit"
+  s.ios.framework  = "UIKit"
+  s.ios.framework = "AppKit"
 end
