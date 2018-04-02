@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B23B9959205D58E600B0A50F /* Visually.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B23B994F205D58E600B0A50F /* Visually.framework */; };
-		B23B9960205D58E600B0A50F /* VisualConstraints.h in Headers */ = {isa = PBXBuildFile; fileRef = B23B9952205D58E600B0A50F /* VisualConstraints.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B23B9960205D58E600B0A50F /* Visually.h in Headers */ = {isa = PBXBuildFile; fileRef = B23B9952205D58E600B0A50F /* Visually.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B23B996E205D5A4E00B0A50F /* ConstraintParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23B9969205D5A4E00B0A50F /* ConstraintParameters.swift */; };
 		B23B9970205D5A4E00B0A50F /* OperatorDefinitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23B996B205D5A4E00B0A50F /* OperatorDefinitions.swift */; };
 		B23B9971205D5A4E00B0A50F /* OperatorImplementations.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23B996C205D5A4E00B0A50F /* OperatorImplementations.swift */; };
@@ -32,7 +32,7 @@
 
 /* Begin PBXFileReference section */
 		B23B994F205D58E600B0A50F /* Visually.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Visually.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B23B9952205D58E600B0A50F /* VisualConstraints.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VisualConstraints.h; sourceTree = "<group>"; };
+		B23B9952205D58E600B0A50F /* Visually.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Visually.h; sourceTree = "<group>"; };
 		B23B9953205D58E600B0A50F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B23B9958205D58E600B0A50F /* VisuallyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VisuallyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B23B995F205D58E600B0A50F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -91,7 +91,7 @@
 			children = (
 				B2AC342E2072851F0004253E /* Visually.xcconfig */,
 				B25640B02072DEC3007E6FF1 /* VisuallyTest.xcconfig */,
-				B23B9952205D58E600B0A50F /* VisualConstraints.h */,
+				B23B9952205D58E600B0A50F /* Visually.h */,
 				B23B9953205D58E600B0A50F /* Info.plist */,
 				B2AC342F207288230004253E /* PlatformCompatibility.swift */,
 				B23B996D205D5A4E00B0A50F /* BuildPoints.swift */,
@@ -121,7 +121,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B23B9960205D58E600B0A50F /* VisualConstraints.h in Headers */,
+				B23B9960205D58E600B0A50F /* Visually.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
