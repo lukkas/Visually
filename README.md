@@ -1,9 +1,9 @@
-# VisualConstraints
+# Visually
 
 ## Example usage
 
 ```swift
-import VisualConstraints
+import Visually
 
 class MyView: UIView {
     let view: UIView
@@ -12,7 +12,7 @@ class MyView: UIView {
 
     func addConstraints() {
         let horizontalConstraints = H(|-view-label->=8-|)
-        let verticalConstraints = V(|-20-view-8-button.length(44)-20-|)
+        let verticalConstraints = V(|-20-view-8-button.equal(44)-20-|)
         NSLayoutConstraint.activate(horizontalConstraints + verticalConstraints)
     }
 }
