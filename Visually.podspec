@@ -8,14 +8,14 @@
 
 Pod::Spec.new do |s|
   s.name         = "Visually"
-  s.version      = "0.0.9"
+  s.version      = "0.0.10"
   s.summary      = "Swift library, that utilizes custom operators to enable creating autolayout constraints in typesafe and expressive manner."
   s.description  = <<-DESC
   Swift library, that utilizes custom operators to enable creating autolayout constraints in typesafe and expressive manner.
   It works similarly to visual format available in UIKit, however it doesn't rely on strings and doesn't require creating either
   views or metrics dictionaries.
                    DESC
-  s.homepage     = "https://github/lukkas/Visually"
+  s.homepage     = "https://github.com/lukkas/Visually"
   s.license      = "MIT"
   s.author             = { "Lukasz Kasperek" => "luk.kasperek@gmail.com" }
   s.social_media_url   = "http://twitter.com/LukaszKasperek"
@@ -25,8 +25,10 @@ Pod::Spec.new do |s|
   s.osx.deployment_target = "10.11"
   s.tvos.deployment_target = "9.0"
 
-  s.source       = { :git => "http://github.com/lukkas/Visually.git", :tag => "#{s.version}" }
+  s.source       = { :git => "https://github.com/lukkas/Visually.git", :tag => "#{s.version}" }
   s.source_files  = "Visually"
-  s.ios.framework  = "UIKit"
-  s.ios.framework = "AppKit"
+
+  s.ios.framework = "UIKit"
+  s.osx.framework = "AppKit"
+  s.tvos.framework = "UIKit"
 end
