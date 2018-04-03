@@ -6,16 +6,12 @@
 //  Copyright © 2018 AppUnite. All rights reserved.
 //
 
-#if TARGET_OS_IOS || TARGET_OS_TV
-#import <UIKit/UIKit.h>
-#elif TARGET_OS_MAC
-#import <AppKit/AppKit.h>
-#endif
+#import <Foundation/Foundation.h>
 
-//! Project version number for VisualConstraints.
+//! Project version number for Visually.
 FOUNDATION_EXPORT double VisuallyVersionNumber;
 
-//! Project version string for VisualConstraints.
+//! Project version string for Visually.
 FOUNDATION_EXPORT const unsigned char VisuallyVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <VisualConstraints/PublicHeader.h>
