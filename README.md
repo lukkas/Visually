@@ -1,3 +1,8 @@
+[![Carthage compatible](https://img.shields.io/badge/Carthage-Compatible-brightgreen.svg?style=flat)](https://github.com/Carthage/Carthage)
+[![Cocoapods](https://img.shields.io/cocoapods/v/Visually.svg?style=flat)](https://cocoapods.org/pods/Visually)
+[![Platform](https://img.shields.io/cocoapods/p/Visually.svg?style=flat)](https://cocoapods.org/pods/Visually)
+[![License](https://img.shields.io/cocoapods/l/Visually.svg?style=flat)](https://cocoapods.org/pods/Visually)
+
 # Visually
 
 ## Example usage
