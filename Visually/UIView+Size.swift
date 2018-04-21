@@ -14,11 +14,11 @@ import AppKit
 #endif
 
 public extension View {
-    public func equal(_ value: CGFloat) -> BuildPoint {
-        return equal(ConstraintParameters(constant: value, priority: .required))
+    public subscript(_ value: CGFloat) -> BuildPoint {
+        return self[ConstraintParameters(constant: value, priority: .required)]
     }
     
-    public func equal(_ value: ConstraintParameters) -> BuildPoint {
+    public subscript(_ value: ConstraintParameters) -> BuildPoint {
         let constraint: Constraint = { axis in
             let c: NSLayoutConstraint = {
                 switch axis {
@@ -32,11 +32,11 @@ public extension View {
         return BuildPoint(constraints: [constraint], view: self)
     }
     
-    public func greaterThanOrEqual(_ value: CGFloat) -> BuildPoint {
-        return equal(ConstraintParameters(constant: value, priority: .required))
+    public subscript(greaterThanOrEqual value: CGFloat) -> BuildPoint {
+        return self[greaterThanOrEqual: ConstraintParameters(constant: value, priority: .required)]
     }
     
-    public func greaterThanOrEqual(_ value: ConstraintParameters) -> BuildPoint {
+    public subscript(greaterThanOrEqual value: ConstraintParameters) -> BuildPoint {
         let constraint: Constraint = { axis in
             let c: NSLayoutConstraint = {
                 switch axis {
@@ -51,10 +51,10 @@ public extension View {
     }
     
     public func lessThanOrEqual(_ value: CGFloat) -> BuildPoint {
-        return equal(ConstraintParameters(constant: value, priority: .required))
+        return self[lessThanOrEqual: ConstraintParameters(constant: value, priority: .required)]
     }
     
-    public func lessThanOrEqual(_ value: ConstraintParameters) -> BuildPoint {
+    public subscript(lessThanOrEqual value: ConstraintParameters) -> BuildPoint {
         let constraint: Constraint = { axis in
             let c: NSLayoutConstraint = {
                 switch axis {
