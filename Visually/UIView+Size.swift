@@ -19,47 +19,36 @@ public extension View {
     }
     
     public subscript(_ value: ConstraintParameters) -> BuildPoint {
+        let sizeBuildPoint = SizeBuildPoint(parameters: value, relation: .equal)
+        return self[sizeBuildPoint]
+    }
+    
+    public subscript(_ sizeBuildPoint: SizeBuildPoint) -> BuildPoint {
         let constraint: Constraint = { axis in
-            let c: NSLayoutConstraint = {
-                switch axis {
-                case .horizontal: return self.widthAnchor.constraint(equalToConstant: value.constant)
-                case .vertical: return self.heightAnchor.constraint(equalToConstant: value.constant)
-                }
-            }()
-            c.priority = value.priority
-            return c
+            switch axis {
+            case .horizontal:
+                return self.sizeConstraint(for: self.widthAnchor, sizeBuildPoint: sizeBuildPoint)
+            case .vertical:
+                return self.sizeConstraint(for: self.heightAnchor, sizeBuildPoint: sizeBuildPoint)
+            }
         }
         return BuildPoint(constraints: [constraint], view: self)
     }
     
-    public subscript(_ sizeBuildPoint: SizeBuildPoint) -> BuildPoint {
+    private func sizeConstraint(for dimension: NSLayoutDimension,
+                                sizeBuildPoint: SizeBuildPoint) -> NSLayoutConstraint {
         let constant = sizeBuildPoint.parameters.constant
-        let constraint: Constraint = { axis in
-            let c: NSLayoutConstraint = {
-                switch axis {
-                case .horizontal:
-                    switch sizeBuildPoint.relation {
-                    case .equal:
-                        return self.widthAnchor.constraint(equalToConstant: constant)
-                    case .greaterThanOrEqual:
-                        return self.widthAnchor.constraint(greaterThanOrEqualToConstant: constant)
-                    case .lessThanOrEqual:
-                        return self.widthAnchor.constraint(lessThanOrEqualToConstant: constant)
-                    }
-                case .vertical:
-                switch sizeBuildPoint.relation {
-                case .equal:
-                    return self.heightAnchor.constraint(equalToConstant: constant)
-                case .greaterThanOrEqual:
-                    return self.heightAnchor.constraint(greaterThanOrEqualToConstant: constant)
-                case .lessThanOrEqual:
-                    return self.heightAnchor.constraint(lessThanOrEqualToConstant: constant)
-                    }
-                }
-            }()
-            c.priority = sizeBuildPoint.parameters.priority
-            return c
-        }
-        return BuildPoint(constraints: [constraint], view: self)
+        let constraint: NSLayoutConstraint = {
+            switch sizeBuildPoint.relation {
+            case .equal:
+                return dimension.constraint(equalToConstant: constant)
+            case .greaterThanOrEqual:
+                return dimension.constraint(greaterThanOrEqualToConstant: constant)
+            case .lessThanOrEqual:
+                return dimension.constraint(lessThanOrEqualToConstant: constant)
+            }
+        }()
+        constraint.priority = sizeBuildPoint.parameters.priority
+        return constraint
     }
 }
