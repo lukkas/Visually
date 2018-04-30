@@ -40,3 +40,8 @@ public struct IntermediaryBuildPoint {
     internal let parameters: ConstraintParameters
     internal let relation: LayoutRelation
 }
+
+public struct SizeBuildPoint {
+    internal let parameters: ConstraintParameters
+    internal let relation: LayoutRelation
+}

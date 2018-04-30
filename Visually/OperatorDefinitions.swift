@@ -18,6 +18,9 @@ prefix operator |-<=
 prefix operator |->=-
 prefix operator |-<=-
 
+prefix operator >=
+prefix operator <=
+
 /**
 * Siblings constraint operators.
 * Use addition precedence in order

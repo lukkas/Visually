@@ -115,7 +115,7 @@ class VisuallyTests: XCTestCase {
         let constraints = [
             H(|-view1-|),
             H(|-view2-|),
-            V(|-view1[50~500]->=20-view2[greaterThanOrEqual: 50]-|)
+            V(|-view1[50~500]->=20-view2[>=50]-|)
             ].flatMap({ $0 })
         NSLayoutConstraint.activate(constraints)
         superview._layout()

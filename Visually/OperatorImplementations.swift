@@ -261,6 +261,24 @@ public postfix func -<=-| (lhs: BuildPointConvertible) -> BuildPoint {
     return BuildPoint(constraints: constraints + [constraint], view: view)
 }
 
+public prefix func >= (lhs: CGFloat) -> SizeBuildPoint {
+    let parameters = ConstraintParameters(constant: lhs, priority: .required)
+    return SizeBuildPoint(parameters: parameters, relation: .greaterThanOrEqual)
+}
+
+public prefix func >= (lhs: ConstraintParameters) -> SizeBuildPoint {
+    return SizeBuildPoint(parameters: lhs, relation: .greaterThanOrEqual)
+}
+
+public prefix func <= (lhs: CGFloat) -> SizeBuildPoint {
+    let parameters = ConstraintParameters(constant: lhs, priority: .required)
+    return SizeBuildPoint(parameters: parameters, relation: .lessThanOrEqual)
+}
+
+public prefix func <= (lhs: ConstraintParameters) -> SizeBuildPoint {
+    return SizeBuildPoint(parameters: lhs, relation: .lessThanOrEqual)
+}
+
 public func ~ (lhs: CGFloat, rhs: LayoutPriority) -> ConstraintParameters {
     return ConstraintParameters(constant: lhs, priority: rhs)
 }
