@@ -17,7 +17,7 @@ class MyView: UIView {
 
     func addConstraints() {
         let horizontalConstraints = H(|-view-label->=8-|)
-        let verticalConstraints = V(|-20-view-8-button.equal(44)-20-|)
+        let verticalConstraints = V(|-20-view-8-button[44]-20-|)
         NSLayoutConstraint.activate(horizontalConstraints + verticalConstraints)
     }
 }
