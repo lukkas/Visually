@@ -191,6 +191,8 @@ class VisuallyTests: XCTestCase {
         superview._layout()
         XCTAssertEqual(view1.frame.height, 100)
     }
+    
+    func testLessThenOrEqualWidthConstraintIsRespected_whenViewIs
 }
 
 private extension View {
