@@ -13,9 +13,9 @@ before_install:
 
 script:
   - swift --version
-  - bundle exec fastlane --project "$PROJECT" --device "$IOS_DEVICE"
+  - bundle exec fastlane scan --project "$PROJECT" --device "$IOS_DEVICE"
   - bash <(curl -s https://codecov.io/bash) -cF ios -J 'Visually'
-  - bundle exec fastlane --project "$PROJECT" --device "$TVOS_DEVICE"
+  - bundle exec fastlane scan --project "$PROJECT" --device "$TVOS_DEVICE"
   - bash <(curl -s https://codecov.io/bash) -cF tvos -J 'Visually'
-  - bundle exec fastlane --project "$PROJECT" --device "$MACOS_DEVICE"
+  - bundle exec fastlane scan --project "$PROJECT" --device "$MACOS_DEVICE"
   - bash <(curl -s https://codecov.io/bash) -cF osx -J 'Visually'
