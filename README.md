@@ -1,6 +1,8 @@
 [![Carthage compatible](https://img.shields.io/badge/Carthage-Compatible-brightgreen.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Cocoapods](https://img.shields.io/cocoapods/v/Visually.svg?style=flat)](https://cocoapods.org/pods/Visually)
 [![Platform](https://img.shields.io/cocoapods/p/Visually.svg?style=flat)](https://cocoapods.org/pods/Visually)
+[![Build Status](https://travis-ci.org/lukkas/Visually.svg)](https://travis-ci.org/codecov/example-swift) 
+[![codecov.io](https://codecov.io/gh/lukkas/Visually/branch/master/graphs/badge.svg)](https://codecov.io/gh/codecov/example-swift/branch/master)
 [![License](https://img.shields.io/cocoapods/l/Visually.svg?style=flat)](https://cocoapods.org/pods/Visually)
 
 # Visually
