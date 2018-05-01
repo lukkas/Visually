@@ -34,7 +34,7 @@ For more details see [Carthage git repository](https://github.com/Carthage/Carth
 Visually defines 15 custom operators and adds subscripts to UIView/NSView in order to achieve its objectives. These operatrors can be divided into 5 groups:
 - prefix operatos starting with `|` - create constraints to leading edge of the superview,
 - postfix operatos ending with `|` - create constraints to trailing edge of the superview,
-- infix operatos startign with `-` - create constraints between sibling views,
+- infix operatos starting with `-` - create constraints between sibling views,
 - `~` operator - placed next to constraint's constant value can change constraint's priority,
 - prefix `>=` and `<=` operators - meant to be used inside subscript in order to change default `equal` relation to `greaterThanOrEqual` or `lessThanOrEqual` respectively.
 
