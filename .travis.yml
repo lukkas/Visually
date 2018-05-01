@@ -1,0 +1,21 @@
+language: swift
+osx_image: xcode9.3
+
+env:
+  global:
+    - PROJECT='Visually.xcodeproj'
+    - IOS_DEVICE='iPhone 8'
+    - TVOS_DEVICE='Apple TV'
+    - MACOS_DEVICE='My Mac'
+
+before_install:
+  - bundle install
+
+script:
+  - swift --version
+  - bundle exec fastlane --project "$PROJECT" --device "$IOS_DEVICE"
+  - bash <(curl -s https://codecov.io/bash) -cF ios -J 'Visually'
+  - bundle exec fastlane --project "$PROJECT" --device "$TVOS_DEVICE"
+  - bash <(curl -s https://codecov.io/bash) -cF tvos -J 'Visually'
+  - bundle exec fastlane --project "$PROJECT" --device "$MACOS_DEVICE"
+  - bash <(curl -s https://codecov.io/bash) -cF osx -J 'Visually'
