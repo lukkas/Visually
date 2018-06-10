@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name         = "Visually"
-  s.version      = "0.2.0"
+  s.version      = "0.2.1"
   s.summary      = "Swift library, that utilizes custom operators to enable creating autolayout constraints in typesafe and expressive manner."
   s.description  = <<-DESC
   Swift library, that utilizes custom operators to enable creating autolayout constraints in typesafe and expressive manner.
