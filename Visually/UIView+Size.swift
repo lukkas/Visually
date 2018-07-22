@@ -13,7 +13,7 @@ import UIKit
 import AppKit
 #endif
 
-public extension View {
+public extension Constrainable {
     public subscript(_ value: CGFloat) -> BuildPoint {
         return self[ConstraintParameters(constant: value, priority: .required)]
     }
@@ -32,7 +32,7 @@ public extension View {
                 return self.sizeConstraint(for: self.heightAnchor, sizeBuildPoint: sizeBuildPoint)
             }
         }
-        return BuildPoint(constraints: [constraint], view: self)
+        return BuildPoint(constraints: [constraint], contrainable: self)
     }
     
     private func sizeConstraint(for dimension: NSLayoutDimension,

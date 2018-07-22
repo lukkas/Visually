@@ -23,7 +23,7 @@ typealias Constraint = (Axis) -> NSLayoutConstraint
 
 public struct BuildPoint {
     internal let constraints: [Constraint]
-    internal let view: View
+    internal let contrainable: Constrainable
 }
 
 public struct OpeningBuildPoint {

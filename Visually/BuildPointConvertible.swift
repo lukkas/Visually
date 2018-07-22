@@ -22,9 +22,3 @@ extension BuildPoint: BuildPointConvertible {
         return self
     }
 }
-
-extension View: BuildPointConvertible {
-    public func buildPoint() -> BuildPoint {
-        return BuildPoint(constraints: [], view: self)
-    }
-}

@@ -24,7 +24,7 @@ public prefix func |- (bpc: BuildPointConvertible) -> BuildPoint {
         case .vertical: return view.topAnchor.constraint(equalTo: superview.topAnchor)
         }
     }
-    return BuildPoint(constraints: constraints + [constraint], view: view)
+    return BuildPoint(constraints: constraints + [constraint], contrainable: view)
 }
 
 public prefix func |->= (parameters: ConstraintParameters) -> OpeningBuildPoint {
@@ -43,7 +43,7 @@ public prefix func |->=- (bpc: BuildPointConvertible) -> BuildPoint {
         case .vertical: return view.topAnchor.constraint(greaterThanOrEqualTo: superview.topAnchor)
         }
     }
-    return BuildPoint(constraints: constraints + [constraint], view: view)
+    return BuildPoint(constraints: constraints + [constraint], contrainable: view)
 }
 
 public prefix func |-<=- (bpc: BuildPointConvertible) -> BuildPoint {
@@ -54,7 +54,7 @@ public prefix func |-<=- (bpc: BuildPointConvertible) -> BuildPoint {
         case .vertical: return view.topAnchor.constraint(lessThanOrEqualTo: superview.topAnchor)
         }
     }
-    return BuildPoint(constraints: constraints + [constraint], view: view)
+    return BuildPoint(constraints: constraints + [constraint], contrainable: view)
 }
 
 public func - (lhs: BuildPointConvertible, rhs: BuildPointConvertible) -> BuildPoint {
@@ -66,7 +66,7 @@ public func - (lhs: BuildPointConvertible, rhs: BuildPointConvertible) -> BuildP
         case .vertical: return rView.topAnchor.constraint(equalTo: lView.bottomAnchor)
         }
     }
-    return BuildPoint(constraints: lConstraints + [constraint] + rConstraints, view: rView)
+    return BuildPoint(constraints: lConstraints + [constraint] + rConstraints, contrainable: rView)
 }
 
 public func - (lhs: OpeningBuildPoint, rhs: BuildPointConvertible) -> BuildPoint {
@@ -85,7 +85,7 @@ public func - (lhs: OpeningBuildPoint, rhs: BuildPointConvertible) -> BuildPoint
         c.priority = lhs.parameters.priority
         return c
     }
-    return BuildPoint(constraints: constraints + [constraint], view: view)
+    return BuildPoint(constraints: constraints + [constraint], contrainable: view)
 }
 
 public func - (lhs: IntermediaryBuildPoint, rhs: BuildPointConvertible) -> BuildPoint {
@@ -105,7 +105,7 @@ public func - (lhs: IntermediaryBuildPoint, rhs: BuildPointConvertible) -> Build
         c.priority = lhs.parameters.priority
         return c
     }
-    return BuildPoint(constraints: lConstraints + [constraint] + rConstraints, view: rView)
+    return BuildPoint(constraints: lConstraints + [constraint] + rConstraints, contrainable: rView)
 }
 
 public func - (lhs: BuildPointConvertible, rhs: ClosingBuildPoint) -> BuildPoint {
@@ -120,7 +120,7 @@ public func - (lhs: BuildPointConvertible, rhs: ClosingBuildPoint) -> BuildPoint
         c.priority = rhs.parameters.priority
         return c
     }
-    return BuildPoint(constraints: constraints + [constraint], view: view)
+    return BuildPoint(constraints: constraints + [constraint], contrainable: view)
 }
 
 public func ->=- (lhs: BuildPointConvertible, rhs: BuildPointConvertible) -> BuildPoint {
@@ -132,7 +132,7 @@ public func ->=- (lhs: BuildPointConvertible, rhs: BuildPointConvertible) -> Bui
         case .vertical: return rView.topAnchor.constraint(greaterThanOrEqualTo: lView.bottomAnchor)
         }
     }
-    return BuildPoint(constraints: lConstraints + [constraint] + rConstraints, view: rView)
+    return BuildPoint(constraints: lConstraints + [constraint] + rConstraints, contrainable: rView)
 }
 
 public func -<=- (lhs: BuildPointConvertible, rhs: BuildPointConvertible) -> BuildPoint {
@@ -144,7 +144,7 @@ public func -<=- (lhs: BuildPointConvertible, rhs: BuildPointConvertible) -> Bui
         case .vertical: return rView.topAnchor.constraint(lessThanOrEqualTo: lView.bottomAnchor)
         }
     }
-    return BuildPoint(constraints: lConstraints + [constraint] + rConstraints, view: rView)
+    return BuildPoint(constraints: lConstraints + [constraint] + rConstraints, contrainable: rView)
 }
 
 public func - (lhs: BuildPointConvertible, rhs: ConstraintParameters) -> IntermediaryBuildPoint {
@@ -171,7 +171,7 @@ public func ->= (lhs: BuildPointConvertible, rhs: ClosingBuildPoint) -> BuildPoi
         c.priority = rhs.parameters.priority
         return c
     }
-    return BuildPoint(constraints: constraints + [constraint], view: view)
+    return BuildPoint(constraints: constraints + [constraint], contrainable: view)
 }
 
 public func -<= (lhs: BuildPoint, rhs: ClosingBuildPoint) -> BuildPoint {
@@ -186,7 +186,7 @@ public func -<= (lhs: BuildPoint, rhs: ClosingBuildPoint) -> BuildPoint {
         c.priority = rhs.parameters.priority
         return c
     }
-    return BuildPoint(constraints: constraints + [constraint], view: view)
+    return BuildPoint(constraints: constraints + [constraint], contrainable: view)
 }
 
 public postfix func -| (lhs: ConstraintParameters) -> ClosingBuildPoint {
@@ -201,7 +201,7 @@ public postfix func -| (lhs: BuildPointConvertible) -> BuildPoint {
         case .vertical: return superview.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         }
     }
-    return BuildPoint(constraints: constraints + [constraint], view: view)
+    return BuildPoint(constraints: constraints + [constraint], contrainable: view)
 }
 
 public postfix func ->=-| (lhs: BuildPointConvertible) -> BuildPoint {
@@ -212,7 +212,7 @@ public postfix func ->=-| (lhs: BuildPointConvertible) -> BuildPoint {
         case .vertical: return superview.bottomAnchor.constraint(greaterThanOrEqualTo: view.bottomAnchor)
         }
     }
-    return BuildPoint(constraints: constraints + [constraint], view: view)
+    return BuildPoint(constraints: constraints + [constraint], contrainable: view)
 }
 
 public postfix func -<=-| (lhs: BuildPointConvertible) -> BuildPoint {
@@ -223,7 +223,7 @@ public postfix func -<=-| (lhs: BuildPointConvertible) -> BuildPoint {
         case .vertical: return superview.bottomAnchor.constraint(lessThanOrEqualTo: view.bottomAnchor)
         }
     }
-    return BuildPoint(constraints: constraints + [constraint], view: view)
+    return BuildPoint(constraints: constraints + [constraint], contrainable: view)
 }
 
 public prefix func >= (lhs: ConstraintParameters) -> SizeBuildPoint {
@@ -239,12 +239,12 @@ public func ~ (lhs: CGFloat, rhs: LayoutPriority) -> ConstraintParameters {
 }
 
 private extension BuildPointConvertible {
-    func decompose() -> (View, [Constraint]) {
+    func decompose() -> (Constrainable, [Constraint]) {
         let bp = buildPoint()
-        return (bp.view, bp.constraints)
+        return (bp.contrainable, bp.constraints)
     }
     
-    func decomposeWithSuperview() -> (View, View, [Constraint]) {
+    func decomposeWithSuperview() -> (View, Constrainable, [Constraint]) {
         let (view, constraints) = decompose()
         guard let superview = view.superview else {
             throwMissingSuperviewException()
