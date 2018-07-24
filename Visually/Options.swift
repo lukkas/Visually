@@ -15,11 +15,10 @@ public struct Options: OptionSet {
         self.rawValue = rawValue
     }
     
-    public static let disregardLayoutDirection = Options(rawValue: 0b001)
-    
-    /// Layout margins
-    //public static let leadingToLayoutMargins
-    // center in supeview
-    public static let toLayoutMargins = Options(rawValue: 0b010)
-    public static let toSafeArea = Options(rawValue: 0b100)
+    public static let disregardLayoutDirection = Options(rawValue: 0b1)
+    #if os(iOS) || os(tvOS)
+    public static let toLayoutMargins = Options(rawValue: 0b10)
+    public static let toReadableMargins = Options(rawValue: 0b100)
+    public static let toSafeArea = Options(rawValue: 0b1000)
+    #endif
 }

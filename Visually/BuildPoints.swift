@@ -13,17 +13,9 @@ import UIKit
 import AppKit
 #endif
 
-
-internal enum Axis {
-    case horizontal
-    case vertical
-}
-
-typealias Constraint = (Axis) -> NSLayoutConstraint
-
 public struct BuildPoint {
     internal let constraints: [Constraint]
-    internal let contrainable: Constrainable
+    internal let contrainable: Constrainable //// typo!
 }
 
 public struct OpeningBuildPoint {

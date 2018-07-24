@@ -24,7 +24,7 @@ public extension Constrainable {
     }
     
     public subscript(_ sizeBuildPoint: SizeBuildPoint) -> BuildPoint {
-        let constraint: Constraint = { axis in
+        let constraint: Constraint = { (axis, _) in
             switch axis {
             case .horizontal:
                 return self.sizeConstraint(for: self.widthAnchor, sizeBuildPoint: sizeBuildPoint)

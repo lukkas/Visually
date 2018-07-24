@@ -16,8 +16,10 @@
 		B25B758A206170AA007473F3 /* BuildPointConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25B7589206170AA007473F3 /* BuildPointConvertible.swift */; };
 		B25B758E20617349007473F3 /* UIView+Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25B758D20617349007473F3 /* UIView+Size.swift */; };
 		B25B7590206173A2007473F3 /* BuildPointsToConstraintsConversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25B758F206173A2007473F3 /* BuildPointsToConstraintsConversion.swift */; };
+		B29248C221090083000604C1 /* InternalStructures.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29248C121090083000604C1 /* InternalStructures.swift */; };
 		B2AC342D207148350004253E /* VisuallyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2AC342C207148350004253E /* VisuallyTests.swift */; };
 		B2AC3430207288230004253E /* PlatformCompatibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2AC342F207288230004253E /* PlatformCompatibility.swift */; };
+		B2BE766A2104D38200221E55 /* Array+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BE76692104D38200221E55 /* Array+Helpers.swift */; };
 		B2C8123E2097BA11003CF1E7 /* ConvenienceOperatorImplementations.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C8123D2097BA11003CF1E7 /* ConvenienceOperatorImplementations.swift */; };
 		B2F641E52104B75C008B13BB /* Constrainable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F641E42104B75C008B13BB /* Constrainable.swift */; };
 		B2F641E72104B874008B13BB /* Options.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F641E62104B874008B13BB /* Options.swift */; };
@@ -47,9 +49,11 @@
 		B25B7589206170AA007473F3 /* BuildPointConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildPointConvertible.swift; sourceTree = "<group>"; };
 		B25B758D20617349007473F3 /* UIView+Size.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Size.swift"; sourceTree = "<group>"; };
 		B25B758F206173A2007473F3 /* BuildPointsToConstraintsConversion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildPointsToConstraintsConversion.swift; sourceTree = "<group>"; };
+		B29248C121090083000604C1 /* InternalStructures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternalStructures.swift; sourceTree = "<group>"; };
 		B2AC342C207148350004253E /* VisuallyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisuallyTests.swift; sourceTree = "<group>"; };
 		B2AC342E2072851F0004253E /* Visually.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Visually.xcconfig; sourceTree = "<group>"; };
 		B2AC342F207288230004253E /* PlatformCompatibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatformCompatibility.swift; sourceTree = "<group>"; };
+		B2BE76692104D38200221E55 /* Array+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Helpers.swift"; sourceTree = "<group>"; };
 		B2C8123D2097BA11003CF1E7 /* ConvenienceOperatorImplementations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvenienceOperatorImplementations.swift; sourceTree = "<group>"; };
 		B2F641E42104B75C008B13BB /* Constrainable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constrainable.swift; sourceTree = "<group>"; };
 		B2F641E62104B874008B13BB /* Options.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Options.swift; sourceTree = "<group>"; };
@@ -101,6 +105,7 @@
 				B23B9953205D58E600B0A50F /* Info.plist */,
 				B2AC342F207288230004253E /* PlatformCompatibility.swift */,
 				B2F641E42104B75C008B13BB /* Constrainable.swift */,
+				B29248C121090083000604C1 /* InternalStructures.swift */,
 				B23B996D205D5A4E00B0A50F /* BuildPoints.swift */,
 				B25B7589206170AA007473F3 /* BuildPointConvertible.swift */,
 				B23B9969205D5A4E00B0A50F /* ConstraintParameters.swift */,
@@ -110,6 +115,7 @@
 				B25B758D20617349007473F3 /* UIView+Size.swift */,
 				B25B758F206173A2007473F3 /* BuildPointsToConstraintsConversion.swift */,
 				B2F641E62104B874008B13BB /* Options.swift */,
+				B2BE76692104D38200221E55 /* Array+Helpers.swift */,
 			);
 			path = Visually;
 			sourceTree = "<group>";
@@ -239,8 +245,10 @@
 				B23B9972205D5A4E00B0A50F /* BuildPoints.swift in Sources */,
 				B2F641E72104B874008B13BB /* Options.swift in Sources */,
 				B23B9971205D5A4E00B0A50F /* OperatorImplementations.swift in Sources */,
+				B29248C221090083000604C1 /* InternalStructures.swift in Sources */,
 				B25B758E20617349007473F3 /* UIView+Size.swift in Sources */,
 				B25B7590206173A2007473F3 /* BuildPointsToConstraintsConversion.swift in Sources */,
+				B2BE766A2104D38200221E55 /* Array+Helpers.swift in Sources */,
 				B2AC3430207288230004253E /* PlatformCompatibility.swift in Sources */,
 				B25B758A206170AA007473F3 /* BuildPointConvertible.swift in Sources */,
 				B23B996E205D5A4E00B0A50F /* ConstraintParameters.swift in Sources */,
