@@ -144,8 +144,8 @@ private func openingEdgeConstraint(for constrainable: Constrainable,
                                    in superview: View,
                                    parameters: ConstraintParameters = .init(),
                                    relation: LayoutRelation = .equal) -> Constraint {
-    return constraint(first: (item: constrainable, anchor: .opening),
-                      second: (item: superview, anchor: .opening),
+    return constraint(first: (item: { _ in return constrainable }, anchor: .opening),
+                      second: (item: superviewConstrainable(superview), anchor: .opening),
                       parameters: parameters,
                       relation: relation)
 }
@@ -154,8 +154,8 @@ private func siblingsConstraint(left: Constrainable,
                                 right: Constrainable,
                                 parameters: ConstraintParameters = .init(),
                                 relation: LayoutRelation = .equal) -> Constraint {
-    return constraint(first: (item: right, anchor: .opening),
-                      second: (item: left, anchor: .closing),
+    return constraint(first: (item: { _ in return right }, anchor: .opening),
+                      second: (item: { _ in return left }, anchor: .closing),
                       parameters: parameters,
                       relation: relation)
 }
@@ -164,26 +164,45 @@ private func closingConstraint(for constrainable: Constrainable,
                                in superview: View,
                                parameters: ConstraintParameters = .init(),
                                relation: LayoutRelation = .equal) -> Constraint {
-    return constraint(first: (item: superview, anchor: .closing),
-                      second: (item: constrainable, anchor: .closing),
+    return constraint(first: (item: superviewConstrainable(superview), anchor: .closing),
+                      second: (item: { _ in return constrainable }, anchor: .closing),
                       parameters: parameters,
                       relation: relation)
 }
 
-private func constraint(first: (item: Constrainable, anchor: AxisAbstractedAnchor),
-                        second: (item: Constrainable, anchor: AxisAbstractedAnchor),
+private func superviewConstrainable(_ superview: View) -> (Options) -> Constrainable {
+    return { options in
+        #if os(iOS) || os(tvOS)
+        if #available(iOS 11, *) {
+            if options.contains(.toSafeArea) {
+                return superview.safeAreaLayoutGuide
+            }
+        }
+        if options.contains(.toLayoutMargins) {
+            return superview.layoutMarginsGuide
+        }
+        if options.contains(.toReadableMargins) {
+            return superview.readableContentGuide
+        }
+        #endif
+        return superview
+    }
+}
+
+private func constraint(first: (item: (Options) -> Constrainable, anchor: AxisAbstractedAnchor),
+                        second: (item: (Options) -> Constrainable, anchor: AxisAbstractedAnchor),
                         parameters: ConstraintParameters,
                         relation: LayoutRelation) -> Constraint {
     return { (axis, options) in
         let c: NSLayoutConstraint = {
             switch axis {
             case .horizontal:
-                return constrainingFunction(for: relation)(first.item.horizontalAnchor(for: first.anchor, options: options),
-                                                           second.item.horizontalAnchor(for: second.anchor, options: options),
+                return constrainingFunction(for: relation)(first.item(options).horizontalAnchor(for: first.anchor, options: options),
+                                                           second.item(options).horizontalAnchor(for: second.anchor, options: options),
                                                            parameters.constant)
             case .vertical:
-                return constrainingFunction(for: relation)(first.item.verticalAnchor(for: first.anchor),
-                                                           second.item.verticalAnchor(for: second.anchor),
+                return constrainingFunction(for: relation)(first.item(options).verticalAnchor(for: first.anchor),
+                                                           second.item(options).verticalAnchor(for: second.anchor),
                                                            parameters.constant)
             }
         }()

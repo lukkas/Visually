@@ -19,6 +19,8 @@ public struct Options: OptionSet {
     #if os(iOS) || os(tvOS)
     public static let toLayoutMargins = Options(rawValue: 0b10)
     public static let toReadableMargins = Options(rawValue: 0b100)
+    
+    @available(iOS 11, *)
     public static let toSafeArea = Options(rawValue: 0b1000)
     #endif
 }
