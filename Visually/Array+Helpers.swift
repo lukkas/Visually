@@ -7,6 +7,11 @@
 //
 
 import Foundation
+#if os(iOS) || os(tvOS)
+import UIKit
+#elseif os(OSX)
+import AppKit
+#endif
 
 extension Array {
     func pairs() -> [(Element, Element)] {
@@ -17,5 +22,14 @@ extension Array {
             result.append((element, next))
         }
         return result
+    }
+}
+
+extension Array where Element == NSLayoutConstraint {
+    func involvedConstrainables() -> [Constrainable] {
+        return flatMap({ [
+            $0.firstItem as? Constrainable,
+            $0.secondItem as? Constrainable
+            ].compactMap({ $0 }) })
     }
 }

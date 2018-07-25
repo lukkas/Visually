@@ -22,12 +22,20 @@ public func V(_ buildPoint: BuildPoint, options: Options = []) -> [NSLayoutConst
 }
 
 public func centerHorizontallyToEachOther(_ constrainables: Constrainable...) -> [NSLayoutConstraint] {
+    return centerHorizontallyToEachOther(constrainables)
+}
+
+public func centerHorizontallyToEachOther(_ constrainables: [Constrainable]) -> [NSLayoutConstraint] {
     return constrainables.pairs().reduce([NSLayoutConstraint](), { (result, pair) -> [NSLayoutConstraint] in
         return result + [pair.0.centerXAnchor.constraint(equalTo: pair.1.centerXAnchor)]
     })
 }
 
 public func centerVerticallyToEachOther(_ constrainables: Constrainable...) -> [NSLayoutConstraint] {
+    return centerVerticallyToEachOther(constrainables)
+}
+
+public func centerVerticallyToEachOther(_ constrainables: [Constrainable]) -> [NSLayoutConstraint] {
     return constrainables.pairs().reduce([NSLayoutConstraint](), { (result, pair) -> [NSLayoutConstraint] in
         return result + [pair.0.centerYAnchor.constraint(equalTo: pair.1.centerYAnchor)]
     })

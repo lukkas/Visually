@@ -15,7 +15,7 @@ import AppKit
 
 public struct BuildPoint {
     internal let constraints: [Constraint]
-    internal let contrainable: Constrainable //// typo!
+    internal let constrainable: Constrainable
 }
 
 public struct OpeningBuildPoint {

@@ -32,7 +32,7 @@ public extension Constrainable {
                 return self.sizeConstraint(for: self.heightAnchor, sizeBuildPoint: sizeBuildPoint)
             }
         }
-        return BuildPoint(constraints: [constraint], contrainable: self)
+        return BuildPoint(constraints: [constraint], constrainable: self)
     }
     
     private func sizeConstraint(for dimension: NSLayoutDimension,

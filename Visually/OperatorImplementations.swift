@@ -19,7 +19,7 @@ public prefix func |- (parameters: ConstraintParameters) -> OpeningBuildPoint {
 public prefix func |- (bpc: BuildPointConvertible) -> BuildPoint {
     let (superview, view, constraints) = bpc.decomposeWithSuperview()
     let constraint = openingEdgeConstraint(for: view, in: superview)
-    return BuildPoint(constraints: constraints + [constraint], contrainable: view)
+    return BuildPoint(constraints: constraints + [constraint], constrainable: view)
 }
 
 public prefix func |->= (parameters: ConstraintParameters) -> OpeningBuildPoint {
@@ -33,53 +33,53 @@ public prefix func |-<= (parameters: ConstraintParameters) -> OpeningBuildPoint 
 public prefix func |->=- (bpc: BuildPointConvertible) -> BuildPoint {
     let (superview, view, constraints) = bpc.decomposeWithSuperview()
     let constraint = openingEdgeConstraint(for: view, in: superview, relation: .greaterThanOrEqual)
-    return BuildPoint(constraints: constraints + [constraint], contrainable: view)
+    return BuildPoint(constraints: constraints + [constraint], constrainable: view)
 }
 
 public prefix func |-<=- (bpc: BuildPointConvertible) -> BuildPoint {
     let (superview, view, constraints) = bpc.decomposeWithSuperview()
     let constraint = openingEdgeConstraint(for: view, in: superview, relation: .lessThanOrEqual)
-    return BuildPoint(constraints: constraints + [constraint], contrainable: view)
+    return BuildPoint(constraints: constraints + [constraint], constrainable: view)
 }
 
 public func - (lhs: BuildPointConvertible, rhs: BuildPointConvertible) -> BuildPoint {
     let (lView, lConstraints) = lhs.decompose()
     let (rView, rConstraints) = rhs.decompose()
     let constraint = siblingsConstraint(left: lView, right: rView)
-    return BuildPoint(constraints: lConstraints + [constraint] + rConstraints, contrainable: rView)
+    return BuildPoint(constraints: lConstraints + [constraint] + rConstraints, constrainable: rView)
 }
 
 public func - (lhs: OpeningBuildPoint, rhs: BuildPointConvertible) -> BuildPoint {
     let (superview, view, constraints) = rhs.decomposeWithSuperview()
     let constraint = openingEdgeConstraint(for: view, in: superview, parameters: lhs.parameters, relation: lhs.relation)
-    return BuildPoint(constraints: constraints + [constraint], contrainable: view)
+    return BuildPoint(constraints: constraints + [constraint], constrainable: view)
 }
 
 public func - (lhs: IntermediaryBuildPoint, rhs: BuildPointConvertible) -> BuildPoint {
     let (lView, lConstraints) = lhs.lastBuildPoint.decompose()
     let (rView, rConstraints) = rhs.decompose()
     let constraint = siblingsConstraint(left: lView, right: rView, parameters: lhs.parameters, relation: lhs.relation)
-    return BuildPoint(constraints: lConstraints + [constraint] + rConstraints, contrainable: rView)
+    return BuildPoint(constraints: lConstraints + [constraint] + rConstraints, constrainable: rView)
 }
 
 public func - (lhs: BuildPointConvertible, rhs: ClosingBuildPoint) -> BuildPoint {
     let (superview, view, constraints) = lhs.decomposeWithSuperview()
     let constraint = closingConstraint(for: view, in: superview, parameters: rhs.parameters)
-    return BuildPoint(constraints: constraints + [constraint], contrainable: view)
+    return BuildPoint(constraints: constraints + [constraint], constrainable: view)
 }
 
 public func ->=- (lhs: BuildPointConvertible, rhs: BuildPointConvertible) -> BuildPoint {
     let (lView, lConstraints) = lhs.decompose()
     let (rView, rConstraints) = rhs.decompose()
     let constraint = siblingsConstraint(left: lView, right: rView, relation: .greaterThanOrEqual)
-    return BuildPoint(constraints: lConstraints + [constraint] + rConstraints, contrainable: rView)
+    return BuildPoint(constraints: lConstraints + [constraint] + rConstraints, constrainable: rView)
 }
 
 public func -<=- (lhs: BuildPointConvertible, rhs: BuildPointConvertible) -> BuildPoint {
     let (lView, lConstraints) = lhs.decompose()
     let (rView, rConstraints) = rhs.decompose()
     let constraint = siblingsConstraint(left: lView, right: rView, relation: .lessThanOrEqual)
-    return BuildPoint(constraints: lConstraints + [constraint] + rConstraints, contrainable: rView)
+    return BuildPoint(constraints: lConstraints + [constraint] + rConstraints, constrainable: rView)
 }
 
 public func - (lhs: BuildPointConvertible, rhs: ConstraintParameters) -> IntermediaryBuildPoint {
@@ -97,13 +97,13 @@ public func -<= (lhs: BuildPointConvertible, rhs: ConstraintParameters) -> Inter
 public func ->= (lhs: BuildPointConvertible, rhs: ClosingBuildPoint) -> BuildPoint {
     let (superview, view, constraints) = lhs.decomposeWithSuperview()
     let constraint = closingConstraint(for: view, in: superview, parameters: rhs.parameters, relation: .greaterThanOrEqual)
-    return BuildPoint(constraints: constraints + [constraint], contrainable: view)
+    return BuildPoint(constraints: constraints + [constraint], constrainable: view)
 }
 
 public func -<= (lhs: BuildPoint, rhs: ClosingBuildPoint) -> BuildPoint {
     let (superview, view, constraints) = lhs.decomposeWithSuperview()
     let constraint = closingConstraint(for: view, in: superview, parameters: rhs.parameters, relation: .lessThanOrEqual)
-    return BuildPoint(constraints: constraints + [constraint], contrainable: view)
+    return BuildPoint(constraints: constraints + [constraint], constrainable: view)
 }
 
 public postfix func -| (lhs: ConstraintParameters) -> ClosingBuildPoint {
@@ -113,19 +113,19 @@ public postfix func -| (lhs: ConstraintParameters) -> ClosingBuildPoint {
 public postfix func -| (lhs: BuildPointConvertible) -> BuildPoint {
     let (superview, view, constraints) = lhs.decomposeWithSuperview()
     let constraint = closingConstraint(for: view, in: superview)
-    return BuildPoint(constraints: constraints + [constraint], contrainable: view)
+    return BuildPoint(constraints: constraints + [constraint], constrainable: view)
 }
 
 public postfix func ->=-| (lhs: BuildPointConvertible) -> BuildPoint {
     let (superview, view, constraints) = lhs.decomposeWithSuperview()
     let constraint = closingConstraint(for: view, in: superview, relation: .greaterThanOrEqual)
-    return BuildPoint(constraints: constraints + [constraint], contrainable: view)
+    return BuildPoint(constraints: constraints + [constraint], constrainable: view)
 }
 
 public postfix func -<=-| (lhs: BuildPointConvertible) -> BuildPoint {
     let (superview, view, constraints) = lhs.decomposeWithSuperview()
     let constraint = closingConstraint(for: view, in: superview, relation: .lessThanOrEqual)
-    return BuildPoint(constraints: constraints + [constraint], contrainable: view)
+    return BuildPoint(constraints: constraints + [constraint], constrainable: view)
 }
 
 public prefix func >= (lhs: ConstraintParameters) -> SizeBuildPoint {
@@ -249,7 +249,7 @@ private func constrainingFunction<AnchorType>(for relation: LayoutRelation) -> (
 private extension BuildPointConvertible {
     func decompose() -> (Constrainable, [Constraint]) {
         let bp = buildPoint()
-        return (bp.contrainable, bp.constraints)
+        return (bp.constrainable, bp.constraints)
     }
     
     func decomposeWithSuperview() -> (View, Constrainable, [Constraint]) {

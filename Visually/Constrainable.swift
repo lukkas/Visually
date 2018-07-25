@@ -30,7 +30,7 @@ public protocol Constrainable: BuildPointConvertible {
 
 extension Constrainable {
     public func buildPoint() -> BuildPoint {
-        return BuildPoint(constraints: [], contrainable: self)
+        return BuildPoint(constraints: [], constrainable: self)
     }
 }
 
