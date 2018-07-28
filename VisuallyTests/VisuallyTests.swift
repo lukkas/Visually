@@ -284,6 +284,30 @@ class VisuallyTests: XCTestCase {
         XCTAssertEqual(superview.frame.midX, view1.frame.midX)
         XCTAssertEqual(superview.frame.midY, view1.frame.midY)
     }
+    
+    func testViewIsOnTheLeft_whenConstrainedToTrailingButDisregardingLayoutDirection() {
+        #if os(iOS) || os(tvOS)
+        superview.semanticContentAttribute = .forceLeftToRight
+        #elseif os(OSX)
+        superview.userInterfaceLayoutDirection = .rightToLeft
+        #endif
+        layoutWith(
+            H(|-view1[20], options: .disregardLayoutDirection),
+            V(|-view1-|)
+        )
+        XCTAssertEqual(view1.frame.minX, 0)
+    }
+    
+    #if os(iOS) || os(tvOS)
+    func testViewHasMarginOf10_whenToLayoutMarginsOptionIsUsed() {
+        superview.layoutMargins = UIEdgeInsets(top: 10, left: 16, bottom: 10, right: 16)
+        layoutWith(
+            H(|-view1-|, options: .toLayoutMargins),
+            V(|-view1-|)
+        )
+        XCTAssertEqual(view1.frame.minX, 16)
+    }
+    #endif
 }
 
 private extension VisuallyTests {
