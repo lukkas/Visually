@@ -261,6 +261,6 @@ private extension BuildPointConvertible {
     }
 }
 
-private func throwMissingSuperviewException() -> Never {
+internal func throwMissingSuperviewException() -> Never {
     fatalError("Attempt to pin view to superview, while it doesn't have one.")
 }
