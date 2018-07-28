@@ -45,10 +45,12 @@ Visually expressions, created with combinations of operators, views, constants a
 ## Example expressions
 
 - `H(|-8-label->=8-|)` - leading to superview equal to 8, trailing to superview greater then or equal 8,
-- `V(label-(10~800)-button[44])` - top to label equal to 10 with priority of 800, button height equal to 44
+- `V(label-(10~Priority.defaultHigh)-button[44])` - top to label equal to 10 with priority of 800, button height equal to 44
 - `V(button[>=44]->=-|)` - button height greater than or equal 44, bottom to superview greater than or equal 0
 - `V(|->=8-label)` - top to superview greater than or equal 8
 - `H(label->=10-view)` - view's leading anchor greater then or equal 10 to label's trailing anchor
+- `H(|-view[50%]-button[50%]-)` - view and button are filling up the superview and both take 50% of width
+- `H(|-view-|, options: .toSafeArea)` - view fills up superview safe area
 
 ## Example usage
 
