@@ -17,8 +17,10 @@ import AppKit
 public typealias View = UIView
 public typealias LayoutRelation = NSLayoutRelation
 public typealias LayoutPriority = UILayoutPriority
+public typealias LayoutGuide = UILayoutGuide
 #elseif os(OSX)
 public typealias View = NSView
 public typealias LayoutRelation = NSLayoutConstraint.Relation
 public typealias LayoutPriority = NSLayoutConstraint.Priority
+public typealias LayoutGuide = NSLayoutGuide
 #endif

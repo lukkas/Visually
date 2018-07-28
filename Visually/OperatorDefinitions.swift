@@ -46,6 +46,11 @@ prefix operator >=
 prefix operator <=
 
 /**
+ * Percent operator
+ */
+postfix operator %
+
+/**
  * Priority operator
  */
 precedencegroup ConstraintPriorityPrecedence {

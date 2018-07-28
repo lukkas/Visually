@@ -15,9 +15,9 @@ import AppKit
 
 public struct ConstraintParameters {
     public let constant: CGFloat
-    public let priority: LayoutPriority
+    public let priority: Priority
     
-    public init(constant: CGFloat = 0, priority: LayoutPriority = .required) {
+    public init(constant: CGFloat = 0, priority: Priority = .required) {
         self.constant = constant
         self.priority = priority
     }

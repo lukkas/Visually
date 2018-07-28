@@ -13,10 +13,10 @@ import UIKit
 import AppKit
 #endif
 
-public func H(_ buildPoint: BuildPoint) -> [NSLayoutConstraint] {
-    return buildPoint.constraints.map({ $0(.horizontal) })
+public func H(_ buildPoint: BuildPoint, options: Options = []) -> [NSLayoutConstraint] {
+    return buildPoint.constraints.map({ $0(.horizontal, options) })
 }
 
-public func V(_ buildPoint: BuildPoint) -> [NSLayoutConstraint] {
-    return buildPoint.constraints.map({ $0(.vertical) })
+public func V(_ buildPoint: BuildPoint, options: Options = []) -> [NSLayoutConstraint] {
+    return buildPoint.constraints.map({ $0(.vertical, options) })
 }

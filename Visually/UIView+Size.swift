@@ -13,7 +13,7 @@ import UIKit
 import AppKit
 #endif
 
-public extension View {
+public extension Constrainable {
     public subscript(_ value: CGFloat) -> BuildPoint {
         return self[ConstraintParameters(constant: value, priority: .required)]
     }
@@ -24,7 +24,7 @@ public extension View {
     }
     
     public subscript(_ sizeBuildPoint: SizeBuildPoint) -> BuildPoint {
-        let constraint: Constraint = { axis in
+        let constraint: Constraint = { (axis, _) in
             switch axis {
             case .horizontal:
                 return self.sizeConstraint(for: self.widthAnchor, sizeBuildPoint: sizeBuildPoint)
@@ -32,7 +32,7 @@ public extension View {
                 return self.sizeConstraint(for: self.heightAnchor, sizeBuildPoint: sizeBuildPoint)
             }
         }
-        return BuildPoint(constraints: [constraint], view: self)
+        return BuildPoint(constraints: [constraint], constrainable: self)
     }
     
     private func sizeConstraint(for dimension: NSLayoutDimension,
@@ -48,7 +48,53 @@ public extension View {
                 return dimension.constraint(lessThanOrEqualToConstant: constant)
             }
         }()
-        constraint.priority = sizeBuildPoint.parameters.priority
+        constraint.priority = sizeBuildPoint.parameters.priority.layoutPriority
+        return constraint
+    }
+    
+    public subscript(_ percent: Percent) -> BuildPoint {
+        return self[RelativeConstraintParameters(multiplier: percent.decimal, priority: .required)]
+    }
+    
+    public subscript(_ value: RelativeConstraintParameters) -> BuildPoint {
+        let sizeBuildPoint = RelativeSizeBuildPoint(parameters: value, relation: .equal)
+        return self[sizeBuildPoint]
+    }
+    
+    public subscript(_ sizeBuildPoint: RelativeSizeBuildPoint) -> BuildPoint {
+        guard let superview = superview else {
+            throwMissingSuperviewException()
+        }
+        let constraint: Constraint = { (axis, _) in
+            switch axis {
+            case .horizontal:
+                return self.relativeSizeConstraint(for: self.widthAnchor,
+                                                     superviewDimension: superview.widthAnchor,
+                                                     relativeSizeBuildPoint: sizeBuildPoint)
+            case .vertical:
+                return self.relativeSizeConstraint(for: self.heightAnchor,
+                                                     superviewDimension: superview.heightAnchor,
+                                                     relativeSizeBuildPoint: sizeBuildPoint)
+            }
+        }
+        return BuildPoint(constraints: [constraint], constrainable: self)
+    }
+    
+    private func relativeSizeConstraint(for dimension: NSLayoutDimension,
+                                          superviewDimension: NSLayoutDimension,
+                                          relativeSizeBuildPoint: RelativeSizeBuildPoint) -> NSLayoutConstraint {
+        let multiplier = relativeSizeBuildPoint.parameters.multiplier
+        let constraint: NSLayoutConstraint = {
+            switch relativeSizeBuildPoint.relation {
+            case .equal:
+                return dimension.constraint(equalTo: superviewDimension, multiplier: multiplier)
+            case .greaterThanOrEqual:
+                return dimension.constraint(greaterThanOrEqualTo: superviewDimension, multiplier: multiplier)
+            case .lessThanOrEqual:
+                return dimension.constraint(lessThanOrEqualTo: superviewDimension, multiplier: multiplier)
+            }
+        }()
+        constraint.priority = relativeSizeBuildPoint.parameters.priority.layoutPriority
         return constraint
     }
 }
