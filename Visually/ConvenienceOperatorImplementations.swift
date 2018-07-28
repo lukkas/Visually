@@ -48,6 +48,10 @@ public prefix func <= (lhs: CGFloat) -> SizeBuildPoint {
     return <=ConstraintParameters(constant: lhs, priority: .required)
 }
 
-public func ~ (lhs: CGFloat, rhs: Float) -> ConstraintParameters {
-    return lhs~LayoutPriority(rhs)
+public prefix func >= (lhs: Percent) -> RelativeSizeBuildPoint {
+    return >=RelativeConstraintParameters(multiplier: lhs.decimal, priority: .required)
+}
+
+public prefix func <= (lhs: Percent) -> RelativeSizeBuildPoint {
+    return <=RelativeConstraintParameters(multiplier: lhs.decimal, priority: .required)
 }

@@ -136,16 +136,20 @@ public prefix func <= (lhs: ConstraintParameters) -> SizeBuildPoint {
     return SizeBuildPoint(parameters: lhs, relation: .lessThanOrEqual)
 }
 
-public func ~ (lhs: CGFloat, rhs: LayoutPriority) -> ConstraintParameters {
+public func ~ (lhs: CGFloat, rhs: Priority) -> ConstraintParameters {
     return ConstraintParameters(constant: lhs, priority: rhs)
 }
 
-public prefix func >= (lhs: Percent) -> RelativeSizeBuildPoint {
-    return RelativeSizeBuildPoint(percent: lhs, relation: .greaterThanOrEqual)
+public prefix func >= (lhs: RelativeConstraintParameters) -> RelativeSizeBuildPoint {
+    return RelativeSizeBuildPoint(parameters: lhs, relation: .greaterThanOrEqual)
 }
 
-public prefix func <= (lhs: Percent) -> RelativeSizeBuildPoint {
-    return RelativeSizeBuildPoint(percent: lhs, relation: .lessThanOrEqual)
+public prefix func <= (lhs: RelativeConstraintParameters) -> RelativeSizeBuildPoint {
+    return RelativeSizeBuildPoint(parameters: lhs, relation: .lessThanOrEqual)
+}
+
+public func ~ (lhs: Percent, rhs: Priority) -> RelativeConstraintParameters {
+    return RelativeConstraintParameters(multiplier: lhs.decimal, priority: rhs)
 }
 
 private func openingEdgeConstraint(for constrainable: Constrainable,
@@ -214,7 +218,7 @@ private func constraint(first: (item: (Options) -> Constrainable, anchor: AxisAb
                                                            parameters.constant)
             }
         }()
-        c.priority = parameters.priority
+        c.priority = parameters.priority.layoutPriority
         return c
     }
 }

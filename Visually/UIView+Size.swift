@@ -48,12 +48,17 @@ public extension Constrainable {
                 return dimension.constraint(lessThanOrEqualToConstant: constant)
             }
         }()
-        constraint.priority = sizeBuildPoint.parameters.priority
+        constraint.priority = sizeBuildPoint.parameters.priority.layoutPriority
         return constraint
     }
     
     public subscript(_ percent: Percent) -> BuildPoint {
-        return self[RelativeSizeBuildPoint(percent: percent, relation: .equal)]
+        return self[RelativeConstraintParameters(multiplier: percent.decimal, priority: .required)]
+    }
+    
+    public subscript(_ value: RelativeConstraintParameters) -> BuildPoint {
+        let sizeBuildPoint = RelativeSizeBuildPoint(parameters: value, relation: .equal)
+        return self[sizeBuildPoint]
     }
     
     public subscript(_ sizeBuildPoint: RelativeSizeBuildPoint) -> BuildPoint {
@@ -78,7 +83,7 @@ public extension Constrainable {
     private func relativeSizeConstraint(for dimension: NSLayoutDimension,
                                           superviewDimension: NSLayoutDimension,
                                           relativeSizeBuildPoint: RelativeSizeBuildPoint) -> NSLayoutConstraint {
-        let multiplier = relativeSizeBuildPoint.percent.decimal
+        let multiplier = relativeSizeBuildPoint.parameters.multiplier
         let constraint: NSLayoutConstraint = {
             switch relativeSizeBuildPoint.relation {
             case .equal:
@@ -89,6 +94,7 @@ public extension Constrainable {
                 return dimension.constraint(lessThanOrEqualTo: superviewDimension, multiplier: multiplier)
             }
         }()
+        constraint.priority = relativeSizeBuildPoint.parameters.priority.layoutPriority
         return constraint
     }
 }
