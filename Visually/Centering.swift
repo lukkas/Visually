@@ -13,12 +13,12 @@ import UIKit
 import AppKit
 #endif
 
-public func centerHorizontallyToEachOther(_ constrainables: Constrainable...) -> [NSLayoutConstraint] {
-    return centerHorizontallyToEachOther(constrainables)
+public func centerHorizontally(_ constrainables: Constrainable...) -> [NSLayoutConstraint] {
+    return centerHorizontally(constrainables)
 }
 
-public func centerVerticallyToEachOther(_ constrainables: Constrainable...) -> [NSLayoutConstraint] {
-    return centerVerticallyToEachOther(constrainables)
+public func centerVertically(_ constrainables: Constrainable...) -> [NSLayoutConstraint] {
+    return centerVertically(constrainables)
 }
 
 public func centerInSuperview(_ constrainables: Constrainable...) -> [NSLayoutConstraint] {
@@ -31,6 +31,22 @@ public func centerHorizontallyInSuperview(_ constrainables: Constrainable...) ->
 
 public func centerVerticallyInSuperview(_ constrainables: Constrainable...) -> [NSLayoutConstraint] {
     return centerVerticallyInSuperview(constrainables)
+}
+
+public func centerHorizontally(_ constrainables: [Constrainable]) -> [NSLayoutConstraint] {
+    return constrainables.pairs().reduce(into: [NSLayoutConstraint](), { (result, pair) in
+        result.append(
+            pair.0.centerXAnchor.constraint(equalTo: pair.1.centerXAnchor)
+        )
+    })
+}
+
+public func centerVertically(_ constrainables: [Constrainable]) -> [NSLayoutConstraint] {
+    return constrainables.pairs().reduce(into: [NSLayoutConstraint](), { (result, pair) in
+        result.append(
+            pair.0.centerYAnchor.constraint(equalTo: pair.1.centerYAnchor)
+        )
+    })
 }
 
 public func centerInSuperview(_ constrainables: [Constrainable]) -> [NSLayoutConstraint] {
@@ -58,21 +74,5 @@ public func centerVerticallyInSuperview(_ constrainables: [Constrainable]) -> [N
             throwMissingSuperviewException()
         }
         result.append(superview.centerYAnchor.constraint(equalTo: constrainable.centerYAnchor))
-    })
-}
-
-public func centerHorizontallyToEachOther(_ constrainables: [Constrainable]) -> [NSLayoutConstraint] {
-    return constrainables.pairs().reduce(into: [NSLayoutConstraint](), { (result, pair) in
-        result.append(
-            pair.0.centerXAnchor.constraint(equalTo: pair.1.centerXAnchor)
-        )
-    })
-}
-
-public func centerVerticallyToEachOther(_ constrainables: [Constrainable]) -> [NSLayoutConstraint] {
-    return constrainables.pairs().reduce(into: [NSLayoutConstraint](), { (result, pair) in
-        result.append(
-            pair.0.centerYAnchor.constraint(equalTo: pair.1.centerYAnchor)
-        )
     })
 }
