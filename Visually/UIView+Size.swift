@@ -51,4 +51,44 @@ public extension Constrainable {
         constraint.priority = sizeBuildPoint.parameters.priority
         return constraint
     }
+    
+    public subscript(_ percent: Percent) -> BuildPoint {
+        return self[RelativeSizeBuildPoint(percent: percent, relation: .equal)]
+    }
+    
+    public subscript(_ sizeBuildPoint: RelativeSizeBuildPoint) -> BuildPoint {
+        guard let superview = superview else {
+            throwMissingSuperviewException()
+        }
+        let constraint: Constraint = { (axis, _) in
+            switch axis {
+            case .horizontal:
+                return self.relativeSizeConstraint(for: self.widthAnchor,
+                                                     superviewDimension: superview.widthAnchor,
+                                                     relativeSizeBuildPoint: sizeBuildPoint)
+            case .vertical:
+                return self.relativeSizeConstraint(for: self.heightAnchor,
+                                                     superviewDimension: superview.heightAnchor,
+                                                     relativeSizeBuildPoint: sizeBuildPoint)
+            }
+        }
+        return BuildPoint(constraints: [constraint], constrainable: self)
+    }
+    
+    private func relativeSizeConstraint(for dimension: NSLayoutDimension,
+                                          superviewDimension: NSLayoutDimension,
+                                          relativeSizeBuildPoint: RelativeSizeBuildPoint) -> NSLayoutConstraint {
+        let multiplier = relativeSizeBuildPoint.percent.decimal
+        let constraint: NSLayoutConstraint = {
+            switch relativeSizeBuildPoint.relation {
+            case .equal:
+                return dimension.constraint(equalTo: superviewDimension, multiplier: multiplier)
+            case .greaterThanOrEqual:
+                return dimension.constraint(greaterThanOrEqualTo: superviewDimension, multiplier: multiplier)
+            case .lessThanOrEqual:
+                return dimension.constraint(lessThanOrEqualTo: superviewDimension, multiplier: multiplier)
+            }
+        }()
+        return constraint
+    }
 }

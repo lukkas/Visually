@@ -37,3 +37,8 @@ public struct SizeBuildPoint {
     internal let parameters: ConstraintParameters
     internal let relation: LayoutRelation
 }
+
+public struct RelativeSizeBuildPoint {
+    internal let percent: Percent
+    internal let relation: LayoutRelation
+}

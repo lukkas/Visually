@@ -140,6 +140,14 @@ public func ~ (lhs: CGFloat, rhs: LayoutPriority) -> ConstraintParameters {
     return ConstraintParameters(constant: lhs, priority: rhs)
 }
 
+public prefix func >= (lhs: Percent) -> RelativeSizeBuildPoint {
+    return RelativeSizeBuildPoint(percent: lhs, relation: .greaterThanOrEqual)
+}
+
+public prefix func <= (lhs: Percent) -> RelativeSizeBuildPoint {
+    return RelativeSizeBuildPoint(percent: lhs, relation: .lessThanOrEqual)
+}
+
 private func openingEdgeConstraint(for constrainable: Constrainable,
                                    in superview: View,
                                    parameters: ConstraintParameters = .init(),

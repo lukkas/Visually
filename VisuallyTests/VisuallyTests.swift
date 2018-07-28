@@ -308,6 +308,14 @@ class VisuallyTests: XCTestCase {
         XCTAssertEqual(view1.frame.minX, 16)
     }
     #endif
+    
+    func testViewsHaveSameWidth_whenThayBothHave50PercentWidth() {
+        layoutWith(
+            H(|-view1[50%]-view2[50%]-|),
+            V(|-view1-|)
+        )
+        XCTAssertEqual(view1.frame.size.width, view2.frame.size.width)
+    }
 }
 
 private extension VisuallyTests {

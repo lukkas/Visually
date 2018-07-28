@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B2171EC1210C70A40052FB80 /* Centering.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2171EC0210C70A40052FB80 /* Centering.swift */; };
+		B2171EC3210C85920052FB80 /* Percent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2171EC2210C85920052FB80 /* Percent.swift */; };
 		B23B9959205D58E600B0A50F /* Visually.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B23B994F205D58E600B0A50F /* Visually.framework */; };
 		B23B9960205D58E600B0A50F /* Visually.h in Headers */ = {isa = PBXBuildFile; fileRef = B23B9952205D58E600B0A50F /* Visually.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B23B996E205D5A4E00B0A50F /* ConstraintParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23B9969205D5A4E00B0A50F /* ConstraintParameters.swift */; };
@@ -38,6 +39,7 @@
 
 /* Begin PBXFileReference section */
 		B2171EC0210C70A40052FB80 /* Centering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Centering.swift; sourceTree = "<group>"; };
+		B2171EC2210C85920052FB80 /* Percent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Percent.swift; sourceTree = "<group>"; };
 		B23B994F205D58E600B0A50F /* Visually.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Visually.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B23B9952205D58E600B0A50F /* Visually.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Visually.h; sourceTree = "<group>"; };
 		B23B9953205D58E600B0A50F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 				B25B758D20617349007473F3 /* UIView+Size.swift */,
 				B25B758F206173A2007473F3 /* BuildPointsToConstraintsConversion.swift */,
 				B2171EC0210C70A40052FB80 /* Centering.swift */,
+				B2171EC2210C85920052FB80 /* Percent.swift */,
 				B2F641E62104B874008B13BB /* Options.swift */,
 				B2BE76692104D38200221E55 /* Array+Helpers.swift */,
 			);
@@ -246,6 +249,7 @@
 				B2C8123E2097BA11003CF1E7 /* ConvenienceOperatorImplementations.swift in Sources */,
 				B23B9970205D5A4E00B0A50F /* OperatorDefinitions.swift in Sources */,
 				B23B9972205D5A4E00B0A50F /* BuildPoints.swift in Sources */,
+				B2171EC3210C85920052FB80 /* Percent.swift in Sources */,
 				B2F641E72104B874008B13BB /* Options.swift in Sources */,
 				B23B9971205D5A4E00B0A50F /* OperatorImplementations.swift in Sources */,
 				B2171EC1210C70A40052FB80 /* Centering.swift in Sources */,
