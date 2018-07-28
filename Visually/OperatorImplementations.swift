@@ -185,7 +185,7 @@ private func closingConstraint(for constrainable: Constrainable,
 private func superviewConstrainable(_ superview: View) -> (Options) -> Constrainable {
     return { options in
         #if os(iOS) || os(tvOS)
-        if #available(iOS 11, *) {
+        if #available(iOS 11, tvOS 11, *) {
             if options.contains(.toSafeArea) {
                 return superview.safeAreaLayoutGuide
             }
