@@ -10,7 +10,6 @@
 		B2171EC1210C70A40052FB80 /* Centering.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2171EC0210C70A40052FB80 /* Centering.swift */; };
 		B2171EC3210C85920052FB80 /* Percent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2171EC2210C85920052FB80 /* Percent.swift */; };
 		B2171EC7210C92AB0052FB80 /* RelativeConstraintsParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2171EC6210C92AB0052FB80 /* RelativeConstraintsParameters.swift */; };
-		B2171EC9210C94C90052FB80 /* Priority.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2171EC8210C94C90052FB80 /* Priority.swift */; };
 		B23B9959205D58E600B0A50F /* Visually.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B23B994F205D58E600B0A50F /* Visually.framework */; };
 		B23B9960205D58E600B0A50F /* Visually.h in Headers */ = {isa = PBXBuildFile; fileRef = B23B9952205D58E600B0A50F /* Visually.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B23B996E205D5A4E00B0A50F /* ConstraintParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23B9969205D5A4E00B0A50F /* ConstraintParameters.swift */; };
@@ -43,7 +42,6 @@
 		B2171EC0210C70A40052FB80 /* Centering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Centering.swift; sourceTree = "<group>"; };
 		B2171EC2210C85920052FB80 /* Percent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Percent.swift; sourceTree = "<group>"; };
 		B2171EC6210C92AB0052FB80 /* RelativeConstraintsParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelativeConstraintsParameters.swift; sourceTree = "<group>"; };
-		B2171EC8210C94C90052FB80 /* Priority.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Priority.swift; sourceTree = "<group>"; };
 		B23B994F205D58E600B0A50F /* Visually.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Visually.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B23B9952205D58E600B0A50F /* Visually.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Visually.h; sourceTree = "<group>"; };
 		B23B9953205D58E600B0A50F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -127,7 +125,6 @@
 				B2171EC2210C85920052FB80 /* Percent.swift */,
 				B2F641E62104B874008B13BB /* Options.swift */,
 				B2BE76692104D38200221E55 /* Array+Helpers.swift */,
-				B2171EC8210C94C90052FB80 /* Priority.swift */,
 			);
 			path = Visually;
 			sourceTree = "<group>";
@@ -264,7 +261,6 @@
 				B25B758E20617349007473F3 /* UIView+Size.swift in Sources */,
 				B25B7590206173A2007473F3 /* BuildPointsToConstraintsConversion.swift in Sources */,
 				B2BE766A2104D38200221E55 /* Array+Helpers.swift in Sources */,
-				B2171EC9210C94C90052FB80 /* Priority.swift in Sources */,
 				B2AC3430207288230004253E /* PlatformCompatibility.swift in Sources */,
 				B25B758A206170AA007473F3 /* BuildPointConvertible.swift in Sources */,
 				B23B996E205D5A4E00B0A50F /* ConstraintParameters.swift in Sources */,

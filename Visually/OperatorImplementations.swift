@@ -136,7 +136,7 @@ public prefix func <= (lhs: ConstraintParameters) -> SizeBuildPoint {
     return SizeBuildPoint(parameters: lhs, relation: .lessThanOrEqual)
 }
 
-public func ~ (lhs: CGFloat, rhs: Priority) -> ConstraintParameters {
+public func ~ (lhs: CGFloat, rhs: LayoutPriority) -> ConstraintParameters {
     return ConstraintParameters(constant: lhs, priority: rhs)
 }
 
@@ -148,7 +148,7 @@ public prefix func <= (lhs: RelativeConstraintParameters) -> RelativeSizeBuildPo
     return RelativeSizeBuildPoint(parameters: lhs, relation: .lessThanOrEqual)
 }
 
-public func ~ (lhs: Percent, rhs: Priority) -> RelativeConstraintParameters {
+public func ~ (lhs: Percent, rhs: LayoutPriority) -> RelativeConstraintParameters {
     return RelativeConstraintParameters(multiplier: lhs.decimal, priority: rhs)
 }
 
@@ -218,7 +218,7 @@ private func constraint(first: (item: (Options) -> Constrainable, anchor: AxisAb
                                                            parameters.constant)
             }
         }()
-        c.priority = parameters.priority.layoutPriority
+        c.priority = parameters.priority
         return c
     }
 }

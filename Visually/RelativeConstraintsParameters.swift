@@ -15,9 +15,9 @@ import AppKit
 
 public struct RelativeConstraintParameters {
     public let multiplier: CGFloat
-    public let priority: Priority
+    public let priority: LayoutPriority
     
-    public init(multiplier: CGFloat = 1, priority: Priority = .required) {
+    public init(multiplier: CGFloat = 1, priority: LayoutPriority = .required) {
         self.multiplier = multiplier
         self.priority = priority
     }

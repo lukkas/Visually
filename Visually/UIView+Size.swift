@@ -48,7 +48,7 @@ public extension Constrainable {
                 return dimension.constraint(lessThanOrEqualToConstant: constant)
             }
         }()
-        constraint.priority = sizeBuildPoint.parameters.priority.layoutPriority
+        constraint.priority = sizeBuildPoint.parameters.priority
         return constraint
     }
     
@@ -94,7 +94,7 @@ public extension Constrainable {
                 return dimension.constraint(lessThanOrEqualTo: superviewDimension, multiplier: multiplier)
             }
         }()
-        constraint.priority = relativeSizeBuildPoint.parameters.priority.layoutPriority
+        constraint.priority = relativeSizeBuildPoint.parameters.priority
         return constraint
     }
 }
