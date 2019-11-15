@@ -7,7 +7,7 @@
 
 # Visually
 
-Visually is a lightweight library, that provides you with a set of custom operators, that are aimed to help you build layouts in a short and expressive way. 
+Visually is a lightweight library, that provides a set of custom operators, that are aimed to help you build layouts in a short and expressive way. 
 
 Visually is heavily inspired by Apple's visual format, however it adds typesafety and removes a necessity of creating views and metrics dictionaries. In fact one of my objective was to make it as familiar for visual format's users, as custom operators' restrictions would allow.
 
@@ -15,7 +15,7 @@ Visually is heavily inspired by Apple's visual format, however it adds typesafet
 
 I wanted to keep Visually lightweight. It is supposed to make the kind of autolayout code, that iOS Developers write the most short, easy to write and super easy to read. My purpose wasn't to mimic all the functionality of Apple's autolayout frameworks, therefore there are kinds of constraints that can't be created with Visually, like relations between views' widths/heights or centering constraints. For those I tend to use Apple's anchor API, which blends with Visually quite well.
 
-Swift's compiler and static analyzer tend to be slow when it comes to resolving long chains of operators and Visually is no exception here. That said, I strongly recommend against creating array of Visually expressions and then flatening it to array of constraints. Instead, I tend to create empty array of constraints and then adding constraints to it with Visually expressions, line after line.
+Swift's compiler and static analyzer tend to be slow when it comes to resolving long chains of operators and Visually is no exception here. That said, I strongly discourage creating array of Visually expressions and then flatening it to array of constraints. Instead, I tend to create empty array of constraints and then add constraints to it with Visually expressions, line after line.
 
 ## Installation
 
@@ -31,10 +31,10 @@ For more details see [Carthage git repository](https://github.com/Carthage/Carth
 
 ## Operators and rules
 
-Visually defines 15 custom operators and adds subscripts to UIView/NSView in order to achieve its objectives. These operatrors can be divided into 5 groups:
-- prefix operatos starting with `|` - create constraints to leading edge of the superview,
-- postfix operatos ending with `|` - create constraints to trailing edge of the superview,
-- infix operatos starting with `-` - create constraints between sibling views,
+Visually defines 15 custom operators and adds subscripts to UIView/NSView in order to achieve its objectives. These operators can be divided into 5 groups:
+- prefix operators starting with `|` - create constraints to leading edge of the superview,
+- postfix operators ending with `|` - create constraints to trailing edge of the superview,
+- infix operators starting with `-` - create constraints between sibling views,
 - `~` operator - placed next to constraint's constant value can change constraint's priority,
 - prefix `>=` and `<=` operators - meant to be used inside subscript in order to change default `equal` relation to `greaterThanOrEqual` or `lessThanOrEqual` respectively.
 
@@ -48,7 +48,7 @@ Visually expressions, created with combinations of operators, views, constants a
 - `V(label-(10 ~ .defaultHigh)-button[44])` - label bottom to button top with spacing of 10, priority defaultHigh, button height set to 44
 - `V(button[>=44]->=-|)` - button height greater than or equal 44, bottom to superview greater than or equal 0
 - `V(|->=8-label)` - top to superview greater than or equal 8
-- `H(label->=10-view)` - view's leading anchor greater then or equal 10 to label's trailing anchor
+- `H(label->=10-view)` - view's leading anchor greater than or equal 10 to label's trailing anchor
 - `H(|-view[50%]-button[50%]-)` - view and button are filling up the superview and both take 50% of width
 - `H(|-view-|, options: .toSafeArea)` - view fills up superview safe area
 
